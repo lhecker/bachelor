@@ -1,0 +1,39 @@
+\chapter{Zusammenfassung und Ausblick}
+
+Die Mobilanwendung Mind-Objects erlaubt es einem Nutzer digitale Linienzeichnungen anzufertigen.
+Analoge Freihandzeichnungen --- beispielsweise auf Whiteboards --- können jedoch nocht nicht in die Anwendung importiert werden.
+Die vorliegende Arbeit dient nun der Erstellung einer Vorgehensweise, sowie darauf aufbauend einer Programmbibliothek, zur Vektorisierung solcher Freihandzeichnungen, damit diese nahtlos in Mind-Objects weiterverarbeitet werden können.
+
+In \autoref{cha:theory} wurde das Problem zunächst theoretisch betrachtet.
+Der daraus resultierende Prozess ist in \autoref{fig:theory_flow} zu sehen.
+Basierend auf dem Prinzip der Medial-Achsen Transformation~\cite{Blum:1967:ATF} wird eine Fotografie der Zeichnung zunächst binarisiert und dann in eine Skelettierung und Distanztransformation aufgespalten (siehe \autoref{sec:theory_preprocess}).
+Bei der Darstellung können Beide zu einer optisch annähernd identischen Repräsentation der binarisierten Grafik wiederhergestellt werden (siehe \autoref{fig:theory_preprocess_reconstructed}).
+Darüber hinaus wurde ein Algorithmus entworfen, welcher die Skelettierung in einzelne, polygonale Linienzüge segmentiert (siehe \autoref{sec:theory_segmentation}).
+Ebenjene entsprechen somit bereits der internen Repräsentation von Mind-Objects, welche Linienzüge anhand der Mittellinie (hier: Skelettierung) sowie Linienbreite (hier: Distanztransformation) speichert.
+Aufgrund der hohen Anzahl von Knotenpunkten der polygonalen Liniensegmente wurde letztendlich, basierend auf dem Douglas-Peucker Algorithmus~\cite{doi:10.3138/FM57-6770-U75U-7727}, eine Methode zur Reduktion der Anzahl an Knotenpunkten, unter Berücksichtigung der Linienbreite, entworfen (siehe \autoref{sec:theory_postprocess}).
+
+Jeder Arbeitsschritt des entworfenen Prozesses wurde als separate Funktion innerhalb einer portablen Programmbibliothek in \texttt{C++} implementiert, deren Aufbau in \autoref{cha:implementation} erläutert wurde.
+Für Sauvola's Binarisierungsalgorithmus sowie für das Zhang-Suen Thinning, welche im Entwurf ausgewählt wurden, lagen bereits existierende Implementationen vor.
+Diese trugen jedoch in Tests den größten Teil der benötigten Rechenzeit bei, weshalb sie im Rahmen dieser Arbeit neu implementiert wurden (siehe respektiv \autoref{subsec:implementation_preprocess_binarization_optimization} und \autoref{subsec:implementation_preprocess_skeletonization_optimization}).
+Die Performanz der entwickelten Implementation wurde dadurch derart verbessert, dass die entwickelte Lösung auch auf langsameren Mobilgeräten zum Einsatz kommen kann.
+
+Anhand von drei exemplarischen Testbildern wurde die optische Qualität der Vektorisierung in \autoref{cha:results} diskutiert, welche für einen ersten Entwurf zufriedenstellend war.
+Linienähnliche Gebilde in der Grafik, welche jedoch keine bewussten Linienzeichnungen sind (beispielsweise Schattenbildungen), werden jedoch ebenso vektorisiert.
+Da es generell schwierig ist eine Heuristik zu definieren, welche in der Nachbereitung der Vektorgrafik solcherlei ungewollte Linienzeichnungen entfernten könnte, stellt dies ein deutliches Problem dar.
+Denn hierdurch fällt die Gesamtlast der optischen Qualität der Vektorisierung einzig auf den Binarisierungsschritt.
+Hierfür wurde Sauvola's Methode ausgewählt, denn als Binarisierungsmethode mit lokaler Schwellenfunktion eignet sie sich für Binarisierung bei ungleichmäßiger Beleuchtung (siehe \autoref{sec:essentials_binarization}).
+Dieser Umstand konnte in den ausgewählten Testfällen auch positiv überzeugen.
+Jedoch hat dies gleichzeitig den Nachteil, dass nur Linien bis zu einer gewissen finiten Breite korrekt vektorisiert werden, was in einigen Fällen zu offensichtlichen, optischen Fehlern führte.
+
+\section{Ausblick}
+
+In \autoref{cha:theory} wurde sich für die Verwendung von Zhang-Suen Thinning entschieden, da der Aufwand zur Implementierung einer korrekten Medial-Achsen Transformation zu aufwändig wäre.
+Die Implementation eines modernen Algorithmus dieser Art --- beispielsweise~\cite{DBLP:journals/cg/MonteroL12} --- wäre deshalb eine bedeutende Verbesserung des Vektorisierungsprozesses.
+Dies hätte darüber hinaus den Vorteil einer tatsächlich geometrisch korrekten Skelettierung der Grafik, was auch die optische Qualität des Ergebnisses verbessern würde.
+
+Das größte Problem der Vektorisierung stellte allerdings die Qualität der Binarisierung über Sauvola's Methode dar.
+Auch die benötigte Rechenzeit ist hierbei problematisch, da diese exponentiell mit der gewählten Fenstergröße steigt, was die maximale Auflösung der zu vektorisierenden Fotografie stark limitiert.
+Die Auswahl eines alternativen, potentiell moderneren Prozesses wäre daher angebracht.
+Der Umstand, dass Sauvola's Methode auf Graustufengrafiken operiert, stellt darüber hinaus einen deutlichen Nachteil dar, da hierdurch bedeutende Informationen im erweiterten Farbraum verloren gehen.
+Publikationen wie~\cite{DBLP:conf/cvpr/Forssen07}, zur Erkennung annähernd gleichfarbiger Blobs in einer Grafik, zeigen, dass dies für eine spätere Erweiterung jedoch möglich sein sollte.
+Für eine zukünftige Erweiterung der vorliegenden Arbeit empfiehlt sich deshalb insbesondere eine Verbesserung des Ansatzes zur Aufbereitung der Grafik.

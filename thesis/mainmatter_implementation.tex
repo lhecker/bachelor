@@ -1,0 +1,317 @@
+\chapter{Implementierung}%
+\label{cha:implementation}
+
+Der Theorie-Teil dieser Arbeit wurde in der Sprache \texttt{C++17} als abstrakte Bibliothek umgesetzt.
+Diese enthält jeden der in \autoref{cha:theory} erläuterten Arbeitsschritte als separate Funktion (siehe \autoref{fig:theory_flow}).
+Gemäß anderer populärer \texttt{C++} Projekte befinden sich die öffentlichen Interface-Definitionen im Unterordner \enquote{include}, während die eigentliche Implementation im Unterordner \enquote{src} zu finden ist.
+Solch eine Implementation als Programmbibliothek ohne Nutzerinterface erlaubt es, das Projekt leichter in fremde Quelltexte --- primär in die existierende Mobilanwendung Mind-Objects --- zu integrieren.
+Die entwickelte Bibliothek basiert auf dem Funktionsumfang der, in der Bildverarbeitung weit verbreiteten, OpenCV Bibliothek (siehe \autoref{sec:essentials_opencv}).
+
+Der Unterordner \enquote{bin} enthält mit \texttt{lhecker\_bachelor\_cli}, darauf aufbauend, ein simples Anwendungsprogramm für die Befehlszeile und stellt exemplarisch den notwendigen Quelltext dar, mit welchem ein gegebenes Bild zu einer Vektorgrafik konvertiert werden kann.
+\autoref{lst:implementation_code} stellt wiederum die relevanten, notwendigen Teile dieser Beispielanwendung dar und somit gleichzeitig die prinzipielle Nutzung der entwickelten Bibliothek.
+Da jeder Arbeitsschritt aus \autoref{fig:theory_flow} als separate Funktion implementiert wurde, ist dieser Quelltext eine eindeutige und direkte Umsetzung des Entwurfs.
+\texttt{paths::set} ist hierbei eine triviale Containerklasse, welche eine Menge an vektorisierten Pfaden speichert.
+Ihr einziger Zweck ist es auf bequeme Weise Memberfunktionen wie \texttt{apply\_approximation} zugänglich zu machen.
+
+Konkrete Konfigurationswerte für die Binarisierung in der Aufbereitung sowie die Kurvenglättung in der Nachbereitung wurden in dem Quelltextauszug zunächst weggelassen, da sie freie Parameter darstellen, welche von einem Anwender der Programmbibliothek nach eigenem Ermessen angepasst werden können.
+Das Einlesen des Originalbilds wurde hierbei des Weiteren nur beispielhaft dargestellt.
+In einer Mobilanwendung würde es beispielsweise direkt mit Kameradaten befüllt werden.
+Auf die verbleibenden drei Programmabschnitte wird im Folgenden näher eingegangen.
+Jeder der Abschnitte entspricht analog einem des Entwurfs.
+
+\begin{listing}[htbp]
+    \begin{minted}[gobble=8]{cpp}
+        using namespace lhecker_bachelor;
+
+        int sauvola_size = ...;
+        double sauvola_factor = ...;
+        double max_simplification_error = ...;
+
+        cv::Mat input, bw, distance, skeleton;
+        paths::set paths;
+
+        // Original einlesen
+        input = cv::imread("input.jpg", cv::IMREAD_GRAYSCALE);
+
+        // Aufbereitung
+        binarize::sauvola(input, bw, sauvola_size, sauvola_factor, cv::THRESH_BINARY_INV);
+        skeleton::zhangsuen(bw, skeleton);
+        distance::transform(bw, distance);
+
+        // Segmentierung
+        paths = path::set::search(skeleton, distance);
+
+        // Nachbereitung
+        paths.apply_approximation(max_simplification_error);
+    \end{minted}
+    \caption{Prinzipielle Nutzung der entwickelten Bibliothek}%
+    \label{lst:implementation_code}
+\end{listing}
+
+\clearpage
+\section{Aufbereitung}%
+\label{sec:implementation_preprocess}
+
+Im Folgenden wird der für die Aufbereitung relevante Quelltextausschnitt betrachtet:
+\begin{minted}[firstnumber=14]{cpp}
+    binarize::sauvola(input, bw, sauvola_size, sauvola_factor, cv::THRESH_BINARY_INV);
+    skeleton::zhangsuen(bw, skeleton);
+    distance::transform(bw, distance);
+\end{minted}
+
+Die drei verwendeten Funktionen sind jeweils definiert als:
+\begin{minted}[gobble=4]{cpp}
+    void lhecker_bachelor::binarize::sauvola(
+        cv::InputArray src,
+        cv::OutputArray dst,
+        int kernel_size,
+        double k,
+        cv::ThresholdTypes threshold_type
+    );
+    void lhecker_bachelor::skeleton::zhangsuen(
+        cv::InputArray src,
+        cv::OutputArray dst
+    );
+    void lhecker_bachelor::distance::transform(
+        cv::InputArray src,
+        cv::OutputArray dst
+    );
+\end{minted}
+
+Im Falle der ersten Funktion werden die Parameter \texttt{kernel\_size} sowie \texttt{k} übergeben die den Parametern \(w\) und \(k\) von Sauvola's Binarisierungsalgorithmus entsprechen (siehe \autoref{subsec:essentials_binarization_sauvola}).
+Der Parameter \texttt{threshold\_type} kann auf \texttt{cv::THRESH\_BINARY} gesetzt werden, um eine reguläre Binariserung vorzunehmen.
+So wie auch in allen bisherigen Abbildungen der vorliegenden Arbeit, werden hiermit alle Graustufenwerte unterhalb des berechneten Schwellwerts \(T(x,y)\) auf Schwarz und alle anderen auf Weiß gesetzt.
+
+Tatsächliche Fotografien die vektorisiert werden sollen, enthalten auf helleren Hintergründen jedoch dunkle Linienzüge, die dem relevanten Bildvordergrund entsprechen.
+Die beiden darauffolgenden Funktionen zur Skelettierung und Berechnung der Distanztransformation gehen dennoch weiterhin davon aus, dass Schwarz dem irrelevanten Bildhintergrund und Weiß dem zu transformierenden Bildvordergrund entsprechen.
+Deshalb ist es möglich, den auch in der Beispielanwendung verwendeten Parameter, \texttt{cv::THRESH\_BINARY\_INV} zu spezifizieren, welcher diese Logik invertiert.
+Graustufenwerte unterhalb des berechneten Schwellwerts \(T(x,y)\) werden dann auf Weiß und alle anderen auf Schwarz gesetzt.
+
+OpenCV bietet für alle drei Funktionen jeweils bereits passende Implementierungen, weshalb sie wie folgt umgesetzt werden könnten:
+\begin{minted}[gobble=4]{cpp}
+    namespace lhecker_bachelor {
+
+    void binarize::sauvola(
+        cv::InputArray src, cv::OutputArray dst,
+        int kernel_size, double k,
+        cv::ThresholdTypes threshold_type
+    ) {
+        cv::ximgproc::niBlackThreshold(
+            src, dst, 255.0, threshold_type,
+            kernel_size, k, cv::BINARIZATION_SAUVOLA
+        );
+    }
+
+    void skeleton::zhangsuen(cv::InputArray src, cv::OutputArray dst) {
+        cv::ximgproc::thinning(src, dst, cv::THINNING_ZHANGSUEN);
+    }
+
+    void distance::transform(cv::InputArray src, cv::OutputArray dst) {
+        cv::distanceTransform(src, dst, cv::DIST_L2, cv::DIST_MASK_PRECISE);
+    }
+
+    } // namespace lhecker_bachelor
+\end{minted}
+
+Im Laufe der Entwicklung fielen die ersten zwei Funktionen jedoch als unzureichend optimiert auf, weshalb sie im Rahmen dieser Arbeit neu implementiert wurden.
+\texttt{cv::distanceTransform} hingegen implementiert eine Variation von Felzenszwalb's Methode~\cite{DBLP:journals/toc/FelzenszwalbH12} und setzt somit bereits einen modernen, äußerst performanten Algorithmus um, welcher nicht weiter verbessert werden musste.
+
+\subsection{Optimierung der Binarisierung}%
+\label{subsec:implementation_preprocess_binarization_optimization}
+
+Reduziert man OpenCV's Ansatz für Sauvola's Methode mit der erwähnten \texttt{cv::ximgproc::niBlackThreshold}\footnote{Siehe \texttt{modules/ximgproc/src/niblack\_thresholding.cpp}~\cite{opencv_contrib_source}} Funktion auf das Wesentliche erhält man den im Anhang sichtbaren \autoref{lst:implementation_sauvola_baseline}.
+
+Der Parameter \texttt{maxValue} findet in diesem Projekt --- und voraussichtlich in den meisten anderen Projekten --- keine weitere Verwendung und wird von der vorliegenden Arbeit immer auf \(255\) gesetzt.
+Es ist deshalb in unserem Fall möglich, die Variable \texttt{mask} ersatzlos zu entfernen und die Ausgabe von \texttt{cv::compare} auf Zeile 22 direkt in \texttt{dst} zu speichern.
+
+Des Weiteren fällt im Code eine ungewöhnlich hohe Anzahl von verwendeten \texttt{cv::Mat} Instanzen auf.
+Die Variable \texttt{variance} wird ab der Berechnung von \texttt{stddev} auf Zeile 17 und \texttt{stddev} wiederum ab der Berechnung von \texttt{tresh} auf Zeile 19 nicht mehr benötigt.
+Ersetzt man \texttt{variance} und \texttt{stddev} durch \texttt{tresh} erspart man sich somit zwei weitere Instanzen.
+
+Darüber hinaus verhindert die Verwendung der Klasse \texttt{cv::Mat}, anstatt der moderneren Alternative \texttt{cv::UMat}, die Möglichkeit einer GPU-basierten Beschleunigung.
+\texttt{cv::UMat} bietet allerdings keine vereinfachten Rechenausdrücke, wie sie in Zeile 16 und 19 genutzt werden.
+Es ist deshalb notwendig diese mit regulären Funktionsaufrufen zu ersetzen.
+
+Dies ergibt letztendlich den im Anhang sichtbaren \autoref{lst:implementation_sauvola_optimized}.
+
+Ein einzelner Funktionsaufruf benötigt im Durchschnitt auf dem verwendeten Testsystem folgende Zeiten für \autoref{fig:results_case_reflection}\systemfootnote{}:
+
+\begin{tabu}{l|l|l}
+    & Ø Latenz & Beschleunigung \\
+    \midrule
+    Original (OpenCV) & \(\SI{115}{\milli\second}\) & \\
+    Optimiert & \(\SI{74}{\milli\second}\) & \(\num{1.55}\times\) \\ % chktex 21
+    \ditto{} mit GPU & \(\SI{5}{\milli\second}\) & \(\num{23.00}\times\) % chktex 21
+\end{tabu}
+
+Im späteren \autoref{cha:results} werden für die gewählten Testbilder Rechenzeiten im Bereich von bis zu \SI{20}{\milli\second} erzielt.
+Die erzielte Reduktion der Rechenzeit des Binarisierungsschritt stellt somit eine signifikante Verbesserung der Vektorisierungsgeschwindigkeit dar.
+
+\subsection{Optimierung der Skelettierung}%
+\label{subsec:implementation_preprocess_skeletonization_optimization}
+
+OpenCV bietet mit \texttt{cv::ximgproc::thinning}\footnote{Siehe \texttt{modules/ximgproc/src/thinning.cpp}~\cite{opencv_contrib_source}} bereits eine Implementierung für Zhang-Suen's Methode (siehe \autoref{subsec:essentials_skeletonization_zhang_suen}).
+Der von OpenCV verfolgte Ansatz der äußeren Schleife ist hierbei eine abgewandelte Form der ursprünglichen Abhandlung~\cite{DBLP:journals/cacm/ZhangS84} und verfährt wie folgt:
+\begin{enumerate}
+    \item Kopiere das Original als \enquote{Ausgabe}
+    \item Erzeuge eine leere Matrix \enquote{Referenz}
+    \item Wiederhole:
+    \begin{enumerate}[topsep=0pt]
+        \item\label{itm:implementation_preprocess_optimization_zhangsuen_sub} Wende eine Zhang-Suen-Iteration auf die \enquote{Ausgabe} an
+        \item\label{itm:implementation_preprocess_optimization_zhangsuen_diff} Berechne die \enquote{Differenz} zwischen der \enquote{Ausgabe} und \enquote{Referenz}-Matrix
+        \item Beende falls die \enquote{Differenz} keine Elemente mehr enthält
+        \item Kopiere die \enquote{Ausgabe} als nächste \enquote{Referenz}
+    \end{enumerate}
+\end{enumerate}
+
+Würde man die Anzahl der geänderten Pixel bereits in \autoref{itm:implementation_preprocess_optimization_zhangsuen_sub} zusätzlich mitzählen, wäre die separate Berechnung der \enquote{Differenz} in \autoref{itm:implementation_preprocess_optimization_zhangsuen_diff} unnötig.
+Zhang-Suen's Abhandlung schlägt solch eine kombinierte Herangehensweise ebenfalls vor.
+
+Den signifikanten Großteil der Rechenzeit macht jedoch letztendlich OpenCV's \texttt{thinningIteration} Funktion aus, welche den Algorithmus eines Zhang-Suen Durchlaufs implementiert.
+OpenCV's Implementation entspricht hierbei bereits Zhang-Suen's Abhandlung:
+\begin{enumerate}
+    \item Erzeuge eine leere \enquote{Markierungen}-Matrix
+    \item Für jeden Pixel \((x,y)\) der \enquote{Ausgabe}:
+    \begin{enumerate}[topsep=0pt]
+        \item\label{itm:implementation_preprocess_optimization_zhangsuen_test} Überspring den Pixel falls nicht alle Zhang-Suen-Bedingungen zutreffen
+        \item Setze ansonsten die Zelle \((x,y)\) in \enquote{Markierungen} als \enquote{wahr}
+    \end{enumerate}
+    \item\label{itm:implementation_preprocess_optimization_zhangsuen_delete} Lösche alle Pixel \enquote{Ausgabe}, welche entsprechend in \enquote{Markierungen} als \enquote{wahr} gesetzt sind
+\end{enumerate}
+
+Im Hinblick einer Optimierung liegt nun nahe, die \enquote{Markierungen}-Matrix zu entfernen und stattdessen direkt die \enquote{Ausgabe}-Matrix zu modifizieren.
+Dies würde es ersparen, am Ende des Durchlaufs nochmal in \autoref{itm:implementation_preprocess_optimization_zhangsuen_delete} über alle Pixel iterieren zu müssen.
+Hierbei eröffnet sich aber das Problem, dass laut dem Zhang-Suen-Algorithmus Änderungen an der \enquote{Ausgabe}-Matrix erst nach einem Durchlauf appliziert werden dürfen.
+Es ist allerdings möglich, die bereits existierende \enquote{Referenz}-Matrix der äußeren Schleife zu benutzen, sofern die \enquote{Ausgabe} nach jedem der beiden Durchläufe in die \enquote{Referenz}-Matrix kopiert wird.
+Bei modernen Prozessoren sind simple Kopierprozesse im Hauptspeicher äußerst gut optimierbar, weshalb dieser Ansatz gegenüber dem komplexeren \autoref{itm:implementation_preprocess_optimization_zhangsuen_delete} eine erhöhte Performanz vorweisen wird.
+
+Ein übliches Mantra für Softwareoptimierungen ist es, nicht zu versuchen den Prozessablauf zu beschleunigen, sondern die Notwendigkeit des Prozesses zu verringern.
+Dies gilt auch hier: Der algorithmisch komplexeste Teil der Vorgehensweise ist der Test auf die Zhang-Suen-Bedingungen unter \autoref{itm:implementation_preprocess_optimization_zhangsuen_test} und wird momentan für jedes einzelne Pixel durchgeführt.
+Wurde das jeweilige Pixel bereits entfernt, beziehungsweise falls es schon immer Teil des Bildhintergrunds war, kann es unmöglich nochmal entfernt werden --- ein Umstand welcher nach jedem Durchlauf auf zunehmend mehr, beziehungsweise letztendlich sogar auf den signifikanten Großteil aller Pixel zutrifft.
+Wird solch ein kostengünstiger Test an den Beginn der Schleife hinzugefügt so erhöht sich die Performanz signifikant.
+
+Letztendlich ist es möglich den gesamten Ansatz umzukehren und eine Schleife zu entwickeln, welche \textit{zunächst} explizit nach Vordergrundpixeln sucht und auf diese \textit{dann} die verbleibende Logik von Zhang-Suen's Methode anwendet.
+Hierdurch wird es möglich, hochoptimierte Funktionen zu nutzen, deren Zweck es ist so schnell wie möglich das nächste Vorkommnis eines Wertes (hier: Vordergrundpixel) zu suchen.
+Im Falle von \texttt{C++} ist dies beispielsweise die \texttt{memchr}\footnote{Eine klassische Funktion der C Standardbibliothek, welche in einem Speicherbereich das erste Vorkommnis eines Byte-Wertes sucht} Funktion.
+
+Ein einzelner Funktionsaufruf benötigt im Durchschnitt auf dem verwendeten Testsystem folgende Zeiten für \autoref{fig:results_case_reflection}\systemfootnote{}:
+
+\begin{tabu}{l|l|l}
+    & Ø Latenz & Beschleunigung \\
+    \midrule
+    Original (OpenCV) & \(\SI{1849}{\milli\second}\) & \\
+    Ohne \enquote{Differenz}-Matrix & \(\SI{1784}{\milli\second}\) & \(\num{1.04}\times\) \\ % chktex 21
+    \ditto{} Ohne \enquote{Markierungen}-Matrix & \(\SI{1677}{\milli\second}\) & \(\num{1.10}\times\) \\ % chktex 21
+    \ditto{} Überspringen der Hintergrundpixel & \(\SI{306}{\milli\second}\) & \(\num{6.04}\times\) \\ % chktex 21
+    \ditto{} mit \texttt{memchr} & \(\SI{39}{\milli\second}\) & \(\num{47.41}\times\) % chktex 21
+\end{tabu}
+
+Die finale, optimierte Version von Zhang-Suen's Methode kann für das gewählte Testbild einen \num{47}-fach geringeren Rechenaufwand vorweisen.
+Ein Großteil des Geschwindigkeitsvorteils entsteht durch das bewusste und möglichst effiziente Überspringen von Pixeln, welche bereits dem Bildhintergrund zugehörig sind und somit kein weiteres Mal entfernt werden können, weshalb der gezeigte Geschwindigkeitsvorteil auch bei anderen Testbildern verbleibt.
+Wird bedacht, dass im späteren \autoref{cha:results} für die gewählten Testbilder eine Rechenzeiten im Bereich von bis zu \SI{20}{\milli\second} erzielt wurden, dann stellt die hierbei erzielte Reduktion der Rechenzeit eine signifikante Verbesserung der Vektorisierungsgeschwindigkeit dar.
+
+\clearpage
+\section{Segmentierung}%
+\label{sec:implementation_segmentation}
+
+\autoref{sec:implementation_segmentation} wurde als folgende Funktion umgesetzt:
+\begin{minted}[gobble=4]{cpp}
+    lhecker_bachelor::paths::set
+    lhecker_bachelor::paths::set::search(
+        const cv::Mat& skeleton,
+        const cv::Mat& distance
+    );
+\end{minted}
+
+Im Entwurf in \autoref{sec:theory_segmentation} wurde erläutert, wie eine Tiefensuche nach Vordergrundpixeln angewendet werden kann, um vektorisierte, polygonale Liniensegmente zu erzeugen.
+Wie es für Implementationen einer Tiefensuche üblich ist, ist es notwendig, die Menge an bereits besuchten Knoten zu speichern.
+Hierfür kann eine Matrix, mit zur Skelettierung identischen Abmaßen, genutzt werden --- im entwickelten Code entspricht dies der \texttt{claims} Matrix.
+Unbesuchte Pixel werden mit \texttt{claim\_state::none} und bereits zu Pfaden zugehörige mit \texttt{claim\_state::path} markiert.
+
+Ein offensichtlicher Ansatz für die \texttt{search} Funktion wäre wie folgt:
+\begin{enumerate}
+    \item\label{itm:implementation_segmentation_prototype_loop} Für jeden Vordergrundpixel \((x,y)\):
+    \begin{enumerate}[topsep=0pt]
+        \item Überspring den Pixel, falls dieser bereits als \enquote{path} in \enquote{claims} gekennzeichnet wurde
+        \item Kennzeichne den Pixel als \enquote{path}
+        \item Führe eine Tiefensuche aus
+    \end{enumerate}
+\end{enumerate}
+
+Der notwendige Stapelspeicher einer Tiefensuche ist nicht notwendig, falls zusätzlich Weggabelungen entsprechend als solche markiert werden (im Code: \texttt{claim\_state::junction}) und die Tiefensuche in Gegenwart solcher, aufgrund der Uneindeutigkeit des Pfads, abgebrochen wird.
+Erreicht die Schleife in \autoref{itm:implementation_segmentation_prototype_loop} in einer späteren Iteration einen als \enquote{junction} markierten Pixel, so können von hier aus einfach nochmals Pfade verfolgt werden, bis sich keine weiteren mehr ergeben.
+
+Dies löst auch gleichzeitig die Anforderung, Zyklen in Pfaden zu erkennen: Wird der Einstiegspunkt einer Tiefensuche als \enquote{junction} markiert, kann der Anfang korrekt erkannt und an diesen überlappend angeknüpft werden.
+
+Es ergibt sich deshalb nun folgender, modifizierter Ansatz, welcher von \texttt{search} implementiert wird:
+\begin{enumerate}
+    \item Für jeden Vordergrundpixel \((x,y)\):
+    \begin{enumerate}[topsep=0pt]
+        \item Überspring den Pixel, falls dieser bereits als \enquote{path} in \enquote{claims} gekennzeichnet wurde
+        \item Kennzeichne den Pixel als \enquote{junction}
+        \item Verfolge Pfade, bis sich keiner mehr von \((x,y)\) aus erzeugen lässt
+    \end{enumerate}
+\end{enumerate}
+
+\texttt{find\_paths\_at} ist die Funktion, welche den gesamten Schleifeninhalt implementiert.
+Die zugrunde liegende Logik ist:
+\begin{enumerate}
+    \item Kehre zurück, falls \((x,y)\) bereits als \enquote{path} in \enquote{claims} gekennzeichnet wurde
+    \item Kennzeichne \((x,y)\) als \enquote{junction}
+    \item Für alle 8 möglichen Richtungen:
+    \begin{enumerate}[topsep=0pt]
+        \item\label{itm:implementation_segmentation_search} Versuche, beginnend von dieser Richtung aus, einen Pfad zu verfolgen
+        \item Falls ein Pfad gefunden wurde, speichere diesen ab
+    \end{enumerate}
+    \item Falls keinerlei Nachbarn gefunden wurden, dann ist dies ein einzelnes, freistehendes Pixel und wird als Ein-Punkt-Pfad abgespeichert
+\end{enumerate}
+
+Um \autoref{itm:implementation_segmentation_search} beschreiben zu können, ist es zunächst notwendig, eine Funktion einzuführen, welche Nachfolger für die Tiefensuche ermitteln kann.
+Dies ist die \texttt{find\_unclaimed\_neighbor\_at} Funktion, welche die in \autoref{sec:theory_segmentation} beschriebene Logik zur Erkennung von Nachfolgern und Weggabelungen implementiert.
+An einer Stelle \((x,y)\) des aktuellen Pfads betrachtet diese Funktion die fünf relevanten, angrenzenden Nachbarn und gibt ein \texttt{neighbor\_search\_result} zurück, welches folgende Ergebnisse signalisieren kann:
+
+\begin{tabu}{l|l|X}
+    Gefundene Nachbarn & Status & Zurückgegebene Koordinaten \\
+    \toprule
+    Keine & \enquote{none} & --- \\
+    Einer / eindeutig & \enquote{path} & die des Nachfolgers \\
+    Zwei oder mehr / uneindeutig & \enquote{junction} & die der Weggabelung
+\end{tabu}
+
+\mbox{}
+
+\autoref{itm:implementation_segmentation_search} ist nun in solch einer Weise implementiert, dass \texttt{find\_unclaimed\_neighbor\_at} iterativ solange aufgerufen wird, wie es eindeutige Nachfolger des Status \enquote{path} zurückgibt.
+Wird einer der beiden anderen Status angetroffen, ist die Suche entsprechend beendet.
+Die angetroffenen Pixel dieses Ablaufs werden als Pfad gespeichert und entsprechend in \enquote{claims} mit \enquote{path} oder \enquote{junction} gekennzeichnet.
+Im Falle einer \enquote{junction} wird zusätzlich als letzter Schritt noch die Weggabelung zum Pfad hinzugefügt, bevor die Suche beendet wird.
+Dies stellt sicher, dass das letzte Linienement des Pfades optisch korrekt an andere Pfade anknüpft.
+
+Nach einem einzelnen, linearen Durchlauf der \texttt{search} Funktion sind alle Vordergrundpixel der Skelettierung entweder als \enquote{path} oder \enquote{junction} in \enquote{claims} gekennzeichnet, womit die Suche beendet ist.
+Aus der gesammelten Liste von entdeckten Pfaden wird dann ein \texttt{lhecker\_bachelor::path::set} erzeugt und zurückgegeben.
+\texttt{lhecker\_bachelor::path::set} agiert hierbei lediglich als Containerklasse und erlaubt es bequem Memberfunktionen für eine Weiterverarbeitung aufzurufen.
+Dies kommt im nachfolgenden \autoref{sec:implementation_postprocess} mit der Memberfunktionen \texttt{apply\_approximation} zum Einsatz.
+
+\clearpage
+\section{Nachbereitung}%
+\label{sec:implementation_postprocess}
+
+\autoref{sec:theory_postprocess} wurde als Memberfunktion der Klasse \texttt{lhecker\_bachelor::path::set} implementiert:
+\begin{minted}[gobble=4]{cpp}
+    namespace lhecker_bachelor::path {
+        class set {
+        public:
+            // ...
+            void apply_approximation(double relative_error_bound);
+            // ...
+        };
+    }
+\end{minted}
+
+Die Funktion wendet eine Douglas-Peucker Kurvenglättung (siehe \autoref{sec:essentials_douglas_peucker}), mit der in \autoref{sec:theory_postprocess} entwickelten, abgeänderten Fehlerfunktion, in-place auf alle im \texttt{set} gespeicherten Pfade an.
+Während die Implementation der klassischen, theoretischen Formulierung entspricht, wurde der rekursive Abstieg jedoch mithilfe eines Stapelspeicher in eine iterative Schleife umgeformt.
+Dies stellt sicher, dass keine Pufferüberläufe des Stacks aufgrund zu tiefer Rekursion ausgelöst werden.
+
+Da ein im vorherigen \autoref{sec:implementation_segmentation} gefundener Pfad ein Zyklus sein kann, wird des Weiteren vor der eigentlichen Kurvenglättung noch geprüft, ob der erste und letzte Punkt identische Koordinaten vorweisen.
+In solch einem Fall wird der zum ersten/letzten am weitesten entfernte Punkt gesucht und der Pfad an dieser Stelle in zwei Segmente aufgeteilt.
+Danach kann die Kurvenglättung wie gewohnt fortgesetzt werden.
+Wird diese Besonderheit nicht bedacht, dann kann die Distanz zwischen dem ersten und letzten Punkt \(0\) betragen, was die korrekte Berechnung des lotrechten Abstands zu anderen Punkten unmöglich macht.

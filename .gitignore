@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Hidden directories of various editors (Jetbrains, Visual Studio Code, etc.)
+.*/
+
+# Backup files of various editors (vim, emacs, etc.)
+*~
+
+# Sublime Text
+*.sublime-workspace
+
+# Visual Studio
+/CMakeSettings.json
+*.exe
+
+# CLion
+/cmake-build*
+
+# TeX output in /thesis
+/thesis/build/
+/thesis/svg-inkscape/
+
+# Application
+/out

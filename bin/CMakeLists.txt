@@ -1,0 +1,42 @@
+add_executable(
+        benchmark_distance_transform
+        benchmark_distance_transform.cpp
+)
+target_link_libraries(
+        benchmark_distance_transform
+        PRIVATE
+        lhecker_bachelor
+)
+
+add_executable(
+        benchmark_sauvola
+        benchmark_sauvola.cpp
+)
+target_link_libraries(
+        benchmark_sauvola
+        PRIVATE
+        lhecker_bachelor
+)
+
+add_executable(
+        benchmark_zhangsuen
+        benchmark_zhangsuen.cpp
+)
+target_link_libraries(
+        benchmark_zhangsuen
+        PRIVATE
+        lhecker_bachelor
+)
+
+add_executable(
+        lhecker_bachelor_cli
+        lhecker_bachelor_cli.cpp
+        lhecker_bachelor_cli.h
+        lhecker_bachelor_cli_fs.cpp
+        lhecker_bachelor_cli_fs_fallback.cpp
+)
+target_link_libraries(
+        lhecker_bachelor_cli
+        PRIVATE
+        lhecker_bachelor
+)

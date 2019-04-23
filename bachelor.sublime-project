@@ -1,0 +1,28 @@
+{
+    "folders": [
+        {
+            "path": ".",
+        },
+    ],
+    "settings": {
+        "ensure_newline_at_eof_on_save": true,
+        "trim_trailing_white_space_on_save": true,
+
+        "TEXroot": "thesis/main.tex",
+        "aux_directory": "thesis/build/",
+        "output_directory": "thesis/build/",
+        "copy_output_on_build": false,
+    },
+    "build_systems": [
+        {
+            "target": "make_pdf",
+            "selector": "text.tex.latex",
+
+            "name": "Build Thesis",
+            "working_dir": "$project_path/thesis",
+
+            "builder": "script",
+            "script_commands": ["latexmk -file-line-error -synctex=1 -interaction=nonstopmode $file_name"],
+        },
+    ],
+}

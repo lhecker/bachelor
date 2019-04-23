@@ -1,0 +1,81 @@
+\chapter{Ergebnisse}%
+\label{cha:results}
+
+Die entwickelte Bibliothek wurde während der Implementierung kontinuierlich mithilfe der exemplarischen Befehlszeilenanwendung \texttt{lhecker\_bachelor\_cli} getestet (siehe \autoref{cha:implementation}).
+Hierfür kam eine Reihe von Testbildern zum Einsatz, welche sich während der Entwicklung jeweils auf eigene Weise als Problemfälle herausstellten.
+
+Im folgenden werden drei dieser Testbilder, welche sich im Anhang befinden, näher betrachtet:
+
+\begin{tabu}{lX}
+    \autoref{fig:results_case_shadow} & Fälschlicherweise erkannte Linien im Bildhintergrund, deren Entfernung in einer potentiellen Nachbereitung schwer zu entfernen sind. \\
+    \autoref{fig:results_case_reflection} & Ungleichmäßige Ausleuchtung des Bildhintergrunds sowie eine generell hohe Linienbreite, da das Bild eine Makroaufnahme darstellt. \\
+    \autoref{fig:results_case_complex} & Generell hohe Komplexität des Bilds mit ungleichmäßiger Ausleuchtung, Verschmutzungen sowie einer stark variierenden Linienbreite.
+\end{tabu}
+
+\mbox{}
+
+Die Befehlszeilenanwendung wurde für die Vektorisierung mit folgenden Parametern aufgerufen:
+
+\begin{itemize}
+    \item \texttt{--max-resolution=1920} \\
+    Skaliert die Eingabebilder auf eine Größe von \(1920\text{px}\times1440\text{px}\) vor der Vektorisierung.
+    Eine höhere Auflösung des Bilds bedingt eine höhere \texttt{--sauvola-size}, damit Linien gleicher physischer Breite weiterhin korrekt mit Sauvola's Methode binarisiert werden, und beeinflusst damit die Geschwindigkeit der Vektorisierung enorm.
+    Deshalb ist es möglich, und teils notwendig, die Auflösung von Bildern zunächst zu reduzieren.
+    \item \texttt{--sauvola-size=41} \\
+    Setzt die Maskengröße \(w = 41\) von Sauvola's Binarisierungalgorithmus (siehe \autoref{subsec:essentials_binarization_sauvola}).
+    \item \texttt{--sauvola-factor=0.3} \\
+    Bestimmt den Faktor \(k = 0.3\) der Binarisierung.
+    \item \texttt{--max-simplification-error=2} \\
+    Hiermit wird der maximal erlaubte Fehler \(e = 2\) gesetzt, bis wohin Liniensegmente vereinfacht werden dürfen (siehe \autoref{sec:theory_postprocess}).
+\end{itemize}
+
+Hierbei ergaben sich folgende Charakteristiken der Vektorisierungsgeschwindigkeit\systemfootnote{}:
+
+\begin{tabu}{X|X|X|X[2]}
+    Abbildung & Anzahl Pixel \newline Skelettierung & Anzahl \newline Knotenpunkte & Ø Latenz \newline (\footnote{Binarisierung / Distanztransformation / Skelettierung / Segmentierung / Approximation}) \\
+    \midrule
+    \autoref{fig:results_case_shadow} & \(11156\) & \(2530\) & \SI{21.3}{\milli\second} \newline \((\num{3.7}/\num{8.7}/\num{7.8}/\num{1.0}/\num{0.2})\si{\milli\second}\) \\
+    \autoref{fig:results_case_reflection} & \(4649\) & \(1333\) & \SI{20.1}{\milli\second} \newline \((\num{4.0}/\num{8.5}/\num{7.1}/\num{0.5}/\num{0.1})\si{\milli\second}\) \\
+    \autoref{fig:results_case_complex} & \(27274\) & \(4506\) & \SI{26.2}{\milli\second} \newline \((\num{3.6}/\num{8.9}/\num{11.3}/\num{1.9}/\num{0.4})\si{\milli\second}\)
+\end{tabu}
+
+\mbox{}
+
+Anhand dieser Charakteristiken lässt sich erkennen, dass die im Laufe der Arbeit entwickelte Implementation eine derartige Geschwindigkeit vorweisen kann, dass sie auch für Mobilgeräte ausreichend sein wird.
+Der neu entwickelte Algorithmus zur Segmentierung zeigt hierbei eine Geschwindigkeit auf, welche linear Abhängig von der Anzahl der Pixel in der Skelettierung ist und lag konsequent bei über \(10\) Megapixel pro Sekunde auf dem Testsystem.
+
+Die optischen Ergebnisse fallen jedoch gemischt aus.
+Aufgrund der Schwierigkeit eine Heuristik zur Entfernung ungewollter Komponenten der Vektorisierung in der Nachbereitung zu kreieren (siehe \autoref{cha:theory}), ist es ungemein wichtig, dass die anfängliche Binarisierung in der Aufbereitung möglichst korrekt ist.
+Während Sauvola's Binarisierungsalgorithmus häufig sehr gute Ergebnisse liefert, besitzt er aber als Algorithmus mit lokaler Schwellenfunktion ein maximale Linienbreite, welche korrekt binarisiert werden kann (siehe \autoref{sec:essentials_binarization}).
+Diese Problematik wird sich allen der drei ausgewählten Testbilder in der folgenden Detailbetrachtung widerspiegeln.
+
+\paragraph{\autoref{fig:results_case_shadow}}
+Linienzüge auf dem Blatt Papier wurden korrekt vom Bildhintergrund separiert.
+Auch Linien in helleren Farben (hier: rot) sowie Verschmutzungen (Kaffefleck unten-rechts) stellten kein Problem dar.
+Die Kanten des Parketts sowie der Schatten unterhalb des Blatts werden jedoch fälschlicherweise ebenfalls vektorisiert.
+Im Bereich der Texterkennung ist es üblich, in einem Nachbereitungsschritt solcherlei Fehler zu bereinigen, da jene ganz offensichtlich keine validen Buchstaben präsentieren würden.
+Bei der Vektorisierung genereller Handzeichnungen ist dieser Schritt jedoch --- wenn überhaupt möglich --- äußerst komplex, da zwischen den annähernd linienähnlichen Parkettkanten und Schatten sowie tatsächlichen Linien kaum zu unterscheiden ist.
+Dieses Bild verdeutlicht deshalb, dass eine verbesserte Aufbereitung notwendig ist.
+
+\wrapfigurefix{0bp}
+\begin{wrapfigure}{R}{5cm}
+    \centering
+    \includesvg[inkscapelatex=false,inkscapearea=crop,width=5cm]{images/results_case_reflection_small}
+    \caption{Vektorisierung von \autoref{fig:results_case_reflection} bei \(640\text{px}\times480\text{px}\)}%
+    \label{fig:results_case_reflection_small}
+\end{wrapfigure}
+\paragraph{\autoref{fig:results_case_reflection}}
+Als Makroaufnahme überschreitet die Linienbreite dieses Bilds deutlich die Fenstergröße der Binarisierung mit Sauvola's Methode (siehe \autoref{sec:essentials_binarization}).
+Der Schaft des mittleren Buchstaben \enquote{h} hat zum Beispiel eine ungefähre Breite von \(50\text{px}\), weshalb dieser optisch gesehen vertikal in zwei Hälften geteilt wird.
+Reduziert man die Bildgröße auf \(640\text{px}\times480\text{px}\) so bessert sich die Situation deutlich (siehe \autoref{fig:results_case_reflection_small}).
+Die Lichtreflektion am linken Zeichen \enquote{2} bereitet jedoch weiterhin Probleme.
+Aufgrund der Farbe der Linie wäre es aber denkbar Modi zu bieten, die auf gebräuchliche Stiftfarben spezialisiert sind.
+Mit solch einer Information wäre es möglich, das kolorierte Originalbild zunächst gezielt zu einem Graustufenbild zu konvertieren und zum Beispiel den blauen Farbkanal abzudunkeln.
+Das Ergebnis könnte dann wie gewohnt binarisiert und weiterverarbeitet werden.
+\wrapfigureunfix{}
+
+\paragraph{\autoref{fig:results_case_complex}}
+Trotz dessen, dass die Abbildung ein Belastungstest ist, zeigt sich, dass eine Vektorisierung generell möglich ist und in vielen Fällen brauchbare Ergebnisse liefern kann, da ein Großteil der Linienzüge optisch korrekt vektorisiert werden.
+Auch die unterschiedliche Breite der Linien bleibt gut erhalten.
+Selbstverständlich werden auch hier die bereits angemerkten Probleme sichtbar.
+So waren zum Beispiel einige Linien zu breit für die gewählte Maske der Binarisierung sowie die Graustufenwerte einiger Linien zu nah am Bildhintergrund, weshalb diese nicht korrekt binarisiert und letztendlich vektorisiert werden konnten.

@@ -1,0 +1,31 @@
+add_library(
+        lhecker_bachelor
+        ../include/lhecker_bachelor/binarize.h
+        ../include/lhecker_bachelor/distance.h
+        ../include/lhecker_bachelor/image.h
+        ../include/lhecker_bachelor/path.h
+        ../include/lhecker_bachelor/skeleton.h
+        ../include/lhecker_bachelor/tracer.h
+        ../include/lhecker_bachelor/util.h
+        binarize.cpp
+        defer.h
+        distance.cpp
+        image.cpp
+        path_approx.cpp
+        path_search.cpp
+        path_svg.cpp
+        skeleton.cpp
+        string_ext.h
+        tracer.cpp
+        util.cpp
+)
+target_include_directories(
+        lhecker_bachelor
+        PUBLIC
+        ${PROJECT_SOURCE_DIR}/include
+)
+target_link_libraries(
+        lhecker_bachelor
+        PUBLIC
+        ${OpenCV_LIBS}
+)

@@ -1,0 +1,489 @@
+\chapter{Entwurf}%
+\label{cha:theory}
+
+Ziel der vorliegenden Arbeit ist es, eine Programmbibliothek zu entwickeln, welche fotografierte Handzeichnungen vektorisiert.
+Um mit der internen Repräsentation der Mobilanwendung Mind-Objects kompatibel zu sein, ist es notwendig, dass die aus der Vektorisierung resultierenden Linien nur mithilfe ihrer polygonalen Mittellinie sowie der variierenden Linienbreite, beziehungsweise Radien, repräsentiert werden (siehe \autoref{fig:theory_line_radius}).
+Bei der späteren Darstellung verknüpft die Anwendung die Punkte mit einzelnen Linien, deren Breite den Radien der Punkte entsprechen.
+Als Endergebnis des Gesamtprozess sollte die optische Darstellung der rekonstruierten Linien annähernd der ursprünglichen fotografierten Handzeichnung entsprechen.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=\textwidth]{images/theory_line_radius}
+        \caption{\textcolor{gray}{\textunicode{●}}~Ursprüngliche Linie\enskip\textunicode{●}~Mittellinie\enskip\textunicode{◍}~Linienbreite}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=\textwidth]{images/theory_line_radius_reconstructed}
+        \caption{\textcolor{gray}{\textunicode{●}}~Rekonstruierte Linie\enskip\textunicode{●}~Knotenpunkte\enskip\textunicode{◍}~Radien}
+    \end{subfigure}
+    \caption{Zielstellung der Linienrepräsentation}%
+    \label{fig:theory_line_radius}
+\end{figure}
+
+Im Bereich der Grafik-Vektorisierung existieren eine Vielzahl von Ansätzen, die für diese Arbeit in Frage kommen könnten.
+Als gebräuchlichster Ablauf gilt jedoch~\cite{DBLP:journals/pami/HilaireT06,DBLP:conf/grec/TombreADMT99}:
+\begin{itemize}
+    \item Linien in der Rastergrafik finden
+    \item Diese Linien in einzelne vektorisierte Primitiven segmentieren
+    \item Kontextuelles Wissen der Fotografie nutzen um das Ergebnis aufzubessern
+\end{itemize}
+
+\clearpage
+Für das Auffinden von Linien in der Rastergrafik stehen prinzipiell drei Arten von Algorithmen zur Verfügung:
+\begin{itemize}
+    \item Anpassung parametrischer Figuren \\
+    Mithilfe eines passenden Modells können Algorithmen wie die Hough Transformation~\cite{DBLP:journals/cacm/DudaH72} Linien im Bild erkennen.
+    Es existieren jedoch nur wenige Ansätze zur Vektorisierung dieser Art (beispielsweise~\cite{DBLP:journals/pr/SongL05}).
+    Der größte Nachteil ist die inhärente Eigenschaft solcher Algorithmen, ausschließlich jene Figuren zu erkennen, welche das Modell vorgibt.
+    Eine flexible Lösung zur Erkennung von beliebigen Linienzügen ist deshalb schwieriger zu erreichen.
+    \item Parallele Gegenkonturen erkennen \\
+    Nach der Anwendung eines Algorithmus zur Kantendetektion --- beispielsweise Canny's Methode~\cite{DBLP:journals/pami/Canny86a} --- können gegenüberliegende, annähernd parallele Konturen zu Linien zusammengefasst werden.
+    Die Distanz zwischen den beiden Konturen entspricht dann der Linienbreite.
+    Algorithmen wie die Stroke-Width Transformation~\cite{DBLP:conf/cvpr/EpshteinOW10} nutzen solch einen Ansatz im Bereich der Texterkennung, da Algorithmen zur Kantendetektion äußerst zuverlässig auch schwach ausgeprägte Konturen von Schriftzügen erkennen.
+    Schriftzüge setzen sich aus Linien annähernd konstant bleibender Breite zusammen.
+    Indem diejenigen ermittelten parallelen Konturen entfernt werden, welche keine konstante Linienbreite vorweisen, kann daher das Ergebnis im Kontext der Texterkennung aufgebessert werden.
+    Problematisch ist allerdings, dass sich bei Linienkreuzungen unter Umständen keine parallelen Konturen finden lassen.
+    Ist also nicht eine Texterkennung das Ziel, sondern eine generelle Vektorisierung von Handzeichnungen, so verkompliziert sich die Lösungsfindung für uneindeutige Konturen, wodurch komplexe Heuristiken und Algorithmen notwendig werden.
+    \item Skelettierungen \\
+    Skelettierungsalgorithmen reduzieren eine binäre Grafik auf annähernd ein Pixel breite Mittellinien (siehe \autoref{sec:essentials_skeletonization}).
+    Algorithmen wie zum Beispiel die Medial-Achsen Transformation liefern hierbei nicht nur die Mittellinie, sondern sogar auch gleichzeitig die benötigte Linienbreite.
+    Aufgrund dessen, sowie der in der Regel relativ simplen Algorithmen, sind Skelettierungen die momentan gebräuchlichste Vorstufe für eine Vektorisierung.
+    Nachteilhaft ist jedoch der Umstand, dass hierfür eine Binarisierung (siehe \autoref{sec:essentials_binarization}) notwendig wird.
+    Diese sind nicht nur in der Regel äußerst rechenaufwändig, sondern können auch, gegenüber Algorithmen zur Kantendetektion, schwach ausgeprägte Konturen übersehen.
+    Skelettierungsalgorithmen können darüber hinaus überflüssige Linienzüge für komplexe Figuren produzieren, ohne deren Existenz eine darauf aufbauende Vektorisierung dennoch korrekt wäre.
+    Da für die vorliegende Arbeit aber einzig die optisch korrekte Darstellung im Endergebnis ist, stellen überflüssige Linienzüge kein Problem dar.
+\end{itemize}
+
+Während der Ansatz zur Erkennung paralleler Gegenkonturen vielversprechend ist, stellt die hohe Komplexität zur Auflösung von uneindeutigen Konturen im Rahmen dieser Arbeit ein Problem dar.
+Skelettierungsalgorithmen bieten hingegen eine weit etablierte, einfache und robuste Alternative, weshalb sie im Folgenden als Ansatz ausgewählt wurden (siehe \autoref{sec:essentials_skeletonization}).
+Es existieren hierfür Algorithmen, die eine sogenannte geometrisch korrekte Skelettierung produzieren, deren rekonstruierte, optische Darstellung dem Original sehr nahekommen würde.
+Diese basieren üblicherweise auf dem Konzept der Medial-Achsen Transformation, welche sowohl die Skelettierung als auch die notwendige Linienbreite liefern könnte.
+\autoref{sec:theory_preprocess} dieses Kapitels wird im Detail auf die Berechnung der Mittellinien und Radien eingehen.
+
+Die mithilfe der Skelettierung berechneten Linien sind noch als Rastergrafik vorhanden.
+Es folgt deshalb die Segmentierung der Linien um vektorisierte Primitiven zu erhalten.
+Da einzig polygonale Mittellinien berechnet werden sollen, kann dafür ein sehr einfacher Algorithmus entworfen werden.
+Dieser muss nur die Segmente der Skelettierung, die keine Linienkreuzungen haben, zu eindeutigen, polygonalen Linienzügen \enquote{aufreihen}.
+In \autoref{sec:theory_segmentation} wird dieses Teilproblem näher behandelt.
+
+Letztendlich ist es üblich, die Vektorisierung mithilfe des kontextuellen Wissens des Subjekts, beziehungsweise der Fotografie, aufzubessern.
+Während beispielsweise im Bereich der Texterkennung von gewissen Prämissen ausgegangen werden kann --- unter anderem, dass Buchstaben mit annähernd konstanter Strichstärke geschrieben werden, oder dass sie annähernd Quadratisch sind --- stellt sich dies im Falle der Vektorisierung beliebiger Freihandzeichnungen als schwieriges Problem dar.
+Deshalb wurde im Rahmen der vorliegenden Arbeit auf die Erstellung eines Algorithmus zur Verbesserung der Vektorisierung zunächst verzichtet.
+Trotz dessen ist aber ein Nachbereitungsschritt notwendig: Da im vorherigen Schritt polygonale Linienzüge basierend auf der Skelettierung generiert wurden, enthalten sie einen Knotenpunkt per Pixel der Skelettierung.
+Solch eine hohe Menge von Knotenpunkten kann potentiell die Darstellungsgeschwindigkeit der Mobilanwendung negativ beeinflussen.
+In \autoref{sec:theory_postprocess} wird deshalb ein Glättungsalgorithmus entworfen, welcher die Linienzüge mit einer Approximation vereinfacht, die optisch ähnlich sind, aber signifikant weniger Knotenpunkte enthalten.
+
+Der aus den nachfolgenden Abschnitten resultierende Ablauf ist in \autoref{sec:theory_flow} zu sehen.
+
+\clearpage
+\section{Aufbereitung der Rastergrafik}%
+\label{sec:theory_preprocess}
+
+Im vorherigen Abschnitt wurde der generelle Ablauf der Vektorisierung festgelegt.
+Als erster Schritt soll die Ermittlung von Linien in der Rastergrafik erfolgen.
+Für diesen Zweck wurde der Weg über eine Skelettierung als Lösungsansatz ausgewählt.
+Letztendliches Ziel der Arbeit ist es, die vektorisierten Linien mithilfe von polygonalen Mittellinien und deren Radien zu repräsentieren.
+Die Gruppe der Algorithmen, welche auf der Medial-Achsen Transformation basieren, bieten exakt solch eine Fähigkeit und liefern gleichzeitig beide benötigten Parameter.
+Während der Implementation dieser Arbeit stellten sich derartige, akzeptable Algorithmen (beispielsweise~\cite{DBLP:journals/cg/MonteroL12}) allerdings als zu aufwändig heraus.
+Obwohl die Distanztransformation weiterhin benötigt wird und deshalb auch weiterhin berechnet werden muss, wurde sich temporär für einen einfacheren Ansatz in Form vom Zhang-Suen Thinning~\cite{DBLP:journals/cacm/ZhangS84} entschieden (siehe \autoref{subsec:essentials_skeletonization_zhang_suen}).
+Zhang-Suen's Methode ist einer der bekanntesten Thinning-Algorithmen, lässt sich sehr leicht implementieren und bietet für einen ersten Ansatz der Vektorisierung Ergebnisse, die einer korrekteren Medial-Achsen Transformation nahe genug kommen~\cite{DBLP:journals/pami/LamLS92}.
+
+Eine derartige Rekonstruktion einer Grafik aus der Skelettierung und der Distanztransformation ist in \autoref{fig:theory_preprocess_reconstructed} sichtbar.
+Dabei wurde für jeden schwarzen Pixel der Skelettierung (\autoref{fig:theory_preprocess_skeleton}) ein Kreis mit dem Radius, entsprechend dem Wert der Distanztransformation (\autoref{fig:theory_preprocess_distance}), gezeichnet.
+
+Wie die meisten Skelettierungsalgorithmen, operiert Zhang-Suen Thinning hingegen auf Binärgrafiken.
+Es ist daher zunächst notwendig, die gegebene Fotografie zu binarisieren.
+\autoref{sec:essentials_binarization} erläutert die generellen Kategorien von Binarisierungsalgorithmen.
+Während Algorithmen mit einer globalen Schwellenfunktion nicht nur sehr performant sind, sondern es auch ermöglichen würden, Linien beliebiger Breite zu vektorisieren, erzielen sie häufig relativ schlechte Ergebnisse bei Fotografien unter natürlichen Lichtverhältnissen, beziehungsweise generell bei Aufnahmen mit inkonsistenter Beleuchtungsstärke.
+Deshalb wird ein langsamerer aber robusterer Algorithmus mit lokaler Schwellenfunktion eingesetzt.
+Als Algorithmus kommt hierbei Sauvola's Methode zum Einsatz, da diese nicht nur simpel zu implementieren ist, sondern auch gute Ergebnisse bei der Binarisierung von Textdokumenten erzielt~\cite{DBLP:journals/jei/SezginS04}.
+
+Als Ergebnis der Aufbereitung der Grafik liegen die ermittelten Linien, in Form der Skelettierung sowie der Distanztransformation vor.
+Es folgt nun die Segmentierung, welche die Skelettierung in einzelne polygonale Linienabschnitte zerlegt, wodurch vektorisierte Linienzüge ermittelt werden.
+
+\begin{figure}[h]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[height=4cm,interpolate=false]{images/theory_preprocess_skeleton}
+        \caption{Skelettierung durch Zhang-Suen Thinning}%
+        \label{fig:theory_preprocess_skeleton}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[height=4cm]{images/theory_preprocess_distance}
+        \caption{Euklidische Distanztransformation}%
+        \label{fig:theory_preprocess_distance}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[height=4cm]{images/essentials_binarization_sauvola}
+        \caption{Binarisiertes Originalbild}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[height=4cm]{images/theory_preprocess_reconstructed}
+        \caption{Rekonstruktion}%
+        \label{fig:theory_preprocess_reconstructed}
+    \end{subfigure}
+    \caption{Beispiel der Rekonstruktion einer Grafik aus Skelettierung und Distanztransformation}
+\end{figure}
+
+\clearpage
+\section{Segmentierung}%
+\label{sec:theory_segmentation}
+
+Der zu erstellende Prozess soll vektorisierte, polygonale Linien erzeugen, weshalb ein Algorithmus notwendig ist, welcher die Pixel der Skelettierung des vorherigen Abschnitts in geordnete Linienzüge segmentiert.
+Da die Skelettierung eine annähernd ein Pixel breite Linie ist, liegt der Ansatz nahe, beginnend von einem beliebigen Vordergrundpixel (hier: schwarzen Pixel) der Skelettierung und mithilfe einer Tiefensuche, sukzessiv \enquote{Pfade} von angrenzenden Pixeln zu bilden.
+Dies kann wiederholt werden, bis alle Pixel der Skelettierung Pfaden zugewiesen wurden.
+Die Linienbreite der Segmente, beziehungsweise \enquote{Pfade}, entspricht wie bei der Medial-Achsen Transformation dem Wert der Distanztransformation an der jeweiligen Stelle des Skelettierungspixels.
+
+\autoref{fig:theory_segmentation_simple} zeigt einen sehr einfachen Fall, bei welchem die maximale Konnektivität von jedem Pixel maximal \(2\) beträgt und somit für jeden Pixel entlang des Pfades maximal ein Folgepixel gefunden werden kann.
+
+Es stellt sich allerdings die Frage, was im Falle einer Gabelung entlang des Pfades und somit einer Konnektivität von über \(2\) zu tun ist.
+Für beispielsweise \autoref{fig:theory_segmentation_intersection} muss deshalb eine Lösung gefunden werden, um \textunicode{◆} als Gabelung zu erkennen und den Pfad nach \textunicode{■}~und~\textunicode{□} aufzuzweigen.
+
+Es ergibt sich darüber hinaus das Problem, dass einige Thinning-Algorithmen nur annähernd ein Pixel breite Linien erzeugen.
+Hierzu gehört unter anderem auch das verwendete Zhang-Suen Thinning, welches \enquote{Stufen} bei Diagonalen hinterlässt (siehe \autoref{subsec:essentials_skeletonization_zhang_suen_imperfection}).
+Für Fälle wie in \autoref{fig:theory_segmentation_zhang_suen_steps} ist es deshalb notwendig, derartige \enquote{Stufen} zu erkennen und sie korrekt zu ein und derselben Linie zuzuordnen.
+
+Hierbei muss außerdem darauf geachtet werden, dass in Fällen wie in \autoref{fig:theory_segmentation_direction} zu Beginn keine \enquote{Abkürzung} über die zwei Pixel \textunicode{▨} genommen wird.
+Diese liegen zwar aneinander, jedoch ist dieser Umstand dem Zhang-Suen Thinning geschuldet, da der Startpunkt gar nicht existieren sollte.
+
+Letztendlich ist es auch notwendig Zyklen wie in \autoref{fig:theory_segmentation_cycle} zu erkennen, da das Ende des Pfads ohne optische Fehler überlappend an den Anfang anknüpfen muss.
+Eine Lösung hierfür ist recht simpel: Wird ein vorheriger Startpunkt oder eine Weggabelung erkannt, so wird diese noch als letzter Schritt zum aktuellen Pfad hinzugefügt.
+
+\clearpage
+\begin{figure}[!htbp]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=25mm]{images/theory_segmentation_simple_path}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=25mm]{images/theory_segmentation_simple_path_traced}
+    \end{subfigure}
+    \caption[Simple Pfadfindung]{Simple Pfadfindung\protect\footnotemark}%
+    \label{fig:theory_segmentation_simple}
+\end{figure}
+\begin{figure}[!htbp]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=25mm]{images/theory_segmentation_intersection}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=25mm]{images/theory_segmentation_intersection_traced}
+    \end{subfigure}
+    \caption[Pfadfindung trotz Weggabelungen]{Pfadfindung trotz Weggabelungen\protect\footnotemark[\value{footnote}]}%
+    \label{fig:theory_segmentation_intersection}
+\end{figure}
+\begin{figure}[!htbp]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=20mm]{images/theory_segmentation_zhang_suen_steps}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=20mm]{images/theory_segmentation_zhang_suen_steps_traced}
+    \end{subfigure}
+    \caption[Pfadfindung trotz Imperfektionen]{Pfadfindung trotz Imperfektionen\protect\footnotemark[\value{footnote}]}%
+    \label{fig:theory_segmentation_zhang_suen_steps}
+\end{figure}
+\begin{figure}[!htbp]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=25mm]{images/theory_segmentation_direction}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=25mm]{images/theory_segmentation_direction_traced}
+    \end{subfigure}
+    \caption[Pfadfindung trotz anderer Startpunktnachbarn]{Pfadfindung trotz anderer Startpunktnachbarn\protect\footnotemark[\value{footnote}]}%
+    \label{fig:theory_segmentation_direction}
+\end{figure}
+\begin{figure}[!htbp]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=20mm]{images/theory_segmentation_cycle}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=20mm]{images/theory_segmentation_cycle_traced}
+    \end{subfigure}
+    \caption[Pfadfindung trotz Zyklen]{Pfadfindung trotz Zyklen\protect\footnotemark[\value{footnote}]}%
+    \label{fig:theory_segmentation_cycle}
+\end{figure}
+\footnotetext{
+    \textunicode{●}~Start\enskip%
+    \textunicode{■}/\textunicode{□}~Ende\enskip%
+    \textunicode{◆}~Gabelung\enskip%
+    \textunicode{▨}~Ignorierte Nachfolger%
+    \label{fn:theory_segmentation_symbols}%
+}
+
+\clearpage
+Es seien folgende Symbole und Farben definiert:
+
+\begin{tabu}{lX}
+    \textunicode{●} & Aktuell zu betrachtendes Pixel \\
+    \textunicode{■} & Bereits zu einem Pfad zugehöriges Pixel \\
+    \textcolor{gray}{\textunicode{■}}/\textcolor{gray}{\textunicode{▨}} & Potentielle Nachfolger \\
+\end{tabu}
+
+\begin{figure}[ht]
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=15mm]{images/theory_segmentation_mask_none}
+        \caption{Ohne Nachfolger}%
+        \label{fig:theory_segmentation_mask_none}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=15mm]{images/theory_segmentation_mask_one}
+        \caption{Eindeutiger Nachfolger}%
+        \label{fig:theory_segmentation_mask_one}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=15mm]{images/theory_segmentation_mask_non_adjacent}
+        \caption{Uneindeutige\\Nachfolger}%
+        \label{fig:theory_segmentation_mask_non_adjacent}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=15mm]{images/theory_segmentation_mask_two}
+        \caption{Zhang-Suen Thinning Imperfektion A}%
+        \label{fig:theory_segmentation_mask_two}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=15mm]{images/theory_segmentation_mask_three}
+        \caption{Zhang-Suen Thinning Imperfektion B}%
+        \label{fig:theory_segmentation_mask_three}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=15mm]{images/theory_segmentation_mask_direction}
+        \caption{Direktionale Suche}%
+        \label{fig:theory_segmentation_mask_direction}
+    \end{subfigure}
+    \caption{Potentielle Anordnungen der Suchmaske}
+\end{figure}
+
+Alle verbleibenden Problemstellungen lassen sich lösen, wenn man jeden Pixel, analog zum Zhang-Suen Thinning (siehe \autoref{sec:essentials_skeletonization}), in einem \((3,3)\) Fenster betrachtet.
+
+Zunächst muss hierbei \autoref{fig:theory_segmentation_simple} algorithmisch gelöst werden.
+Wie bereits eingangs erwähnt, werden wir hierfür eine Tiefensuche nutzen um jeweils angrenzende Pixelnachbarn zu einem möglichst langen Pfad zu sammeln.
+Die Tiefensuche ist an einem Ende angekommen, wenn man bereits zu einem Pfad zugehörige Pixel (\textunicode{■}) ignoriert und sich wie in \subref{fig:theory_segmentation_mask_none} kein potentieller Nachfolger mehr finden lässt.
+Alternativ ergibt sich im einfachsten Fall ein Bild wie in \subref{fig:theory_segmentation_mask_one}, da hier nur ein einziger potentieller Nachfolger (\textcolor{gray}{\textunicode{■}}) verbleibt, welcher dann als Fortsetzung der Tiefensuche dient.
+
+Weggabelungen wie in \autoref{fig:theory_segmentation_intersection} können dadurch erkannt werden, dass zwei oder mehr getrennt voneinander liegende potentielle Nachfolger (\textcolor{gray}{\textunicode{■}}) vorzufinden sind \subref{fig:theory_segmentation_mask_non_adjacent}.
+Ist dies der Fall, muss die Tiefensuche beendet werden, da hiermit auch der bisher eindeutige Pfad an dieser Stelle endet.
+Allerdings müssen nun, ausgehend von dieser Stelle, für jeden Nachfolger separat Tiefensuchen gestartet werden, damit jene für sich jeweils Pfade generieren.
+Auf diese Weise werden ausschließlich eindeutige Pfadsegmente erzeugt.
+
+Imperfektionen der Zhang-Suen Skelettierung, wie in \autoref{fig:theory_segmentation_zhang_suen_steps}, äußern sich durch Anordnungen von mindestens zwei konsekutiv aufeinanderfolgenden Nachbarn (\textcolor{gray}{\textunicode{■}}/\textcolor{gray}{\textunicode{▨}}), von denen jeweils der horizontale oder vertikale Nachbar überflüssig ist (\textcolor{gray}{\textunicode{▨}})~\cite{DBLP:journals/pami/LamLS92}.
+\subref{fig:theory_segmentation_mask_two} und \subref{fig:theory_segmentation_mask_three} stellen dies beispielhaft dar --- die horizontalen und vertikalen Spiegelungen sowie jeweiligen \(90°\) Rotationen sind weitere potentielle Kombinationen.
+
+Werden konsekutiv aufeinanderfolgende Nachbarn erkannt, so müssen horizontale und vertikale Nachbarn (\textcolor{gray}{\textunicode{▨}}) favorisiert und als potentieller Nachfolger genutzt werden.
+Wenn anschließend solch ein Nachfolger (\textcolor{gray}{\textunicode{▨}}) in der nächsten Iteration behandelt wird, können aufgrund der verbleibenden Prämissen des Zhang-Suen Thinnings, im Fall von \subref{fig:theory_segmentation_mask_two} nur \subref{fig:theory_segmentation_mask_one}, \subref{fig:theory_segmentation_mask_non_adjacent} und \subref{fig:theory_segmentation_mask_three} folgen.
+Im Fall von \subref{fig:theory_segmentation_mask_three} hingegen wird der Nachfolger (\textcolor{gray}{\textunicode{▨}}) immer mit der Suchmaske \subref{fig:theory_segmentation_mask_non_adjacent} enden, da die beiden regulären Nachbarn (\textcolor{gray}{\textunicode{■}}) daraufhin getrennt voneinander liegen.
+In maximal 2 Folgeiterationen wird dieses Problem somit umgangen und korrekt zu einem Pfad umgewandelt.
+
+Letztendlich kann \autoref{fig:theory_segmentation_direction} gelöst werden, indem zusätzlich die aktuelle \enquote{Richtung} der Suche einbezogen wird.
+Hiermit müssen nur die 5 tatsächlich relevanten statt aller 8 Nachbarn im \((3,3)\) Fenster betrachtet werden.
+\subref{fig:theory_segmentation_mask_direction} zeigt dies an einem Beispiel:
+Beginnend vom Startpunkt \textunicode{■} wurde hier zunächst der rechte Pixel \textunicode{●} ausgewählt.
+Dieser ist nun der aktuell zu betrachtende Pixel.
+Entsprechend der \enquote{Richtung} des vorherigen Schritts, können weitere Nachfolger nur im, mit der gestrichelten Linie  \textunicode{┅}, umrahmten Bereich vorhanden sein, wodurch nur \textcolor{gray}{\textunicode{■}} in Frage kommt.
+Der andere Nachbar des Startpunkts \textcolor{gray}{\textunicode{▨}} wird nicht weiter betrachtet und somit der aktuelle Punkt nicht fälschlicherweise als Weggabelung, wie in \subref{fig:theory_segmentation_mask_non_adjacent}, gekennzeichnet.
+
+Die in diesem Abschnitt erläuterte Segmentierung zerlegt die Skelettierung des vorherigen \autoref{sec:theory_preprocess} in einzelne, vektorisierte, polygonale Linienabschnitte.
+Diese sind noch in einer unnötig hohen Auflösung, da der in diesem Abschnitt entwickelte Algorithmus für jeden Pixel einen Knotenpunkt erzeugt hat.
+Im Folgenden wird deshalb ein Algorithmus kreiert, welcher die Linienzüge approximiert und optisch unnötige Knotenpunkte entfernt.
+
+\clearpage
+\section{Nachbereitung der Vektorisierung}%
+\label{sec:theory_postprocess}
+
+Die im vorherigen \autoref{sec:theory_segmentation} ermittelten Liniensegmente enthalten für jeden Pixel der Skelettierung einen Knotenpunkt, beziehungsweise Vertex, welcher dann von der Anwendung gezeichnet wird.
+Da die beobachtbare Geschwindigkeit von Grafikanwendungen in der Regel proportional zur Anzahl der sichtbaren und somit zu zeichnenden Knotenpunkten ist, liegt es nahe, jene unbedeutenden Linienpunkte zu entfernen, welche nicht zum Gesamteindruck des Bildes beitragen.
+\autoref{fig:theory_postprocess_simplification} zeigt exemplarisch die Reduktion der Anzahl der Knotenpunkte eines im vorherigen Abschnitt ermittelten Linienzugs auf ein Elftel.
+Trotz der Approximation sind beide Linienzüge annähernd gleich, ungeachtet dessen, dass der Bildausschnitt stark vergrößert wurde.
+
+\begin{figure}[ht]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=\textwidth]{images/theory_postprocess_without_simplification}
+        \caption{\(124\) Linienpunkte}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=\textwidth]{images/theory_postprocess_with_simplification}
+        \caption{\(11\) Linienpunkte}
+    \end{subfigure}
+    \caption{Entfernung optisch irrelevanter Linienpunkte}%
+    \label{fig:theory_postprocess_simplification}
+\end{figure}
+
+\wrapfigurefix{2bp}
+\begin{wrapfigure}{R}{5cm}
+    \centering
+    \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=5cm]{images/theory_postprocess_width_problem}
+    \caption{Eine optisch inkorrekte Glättung}%
+    \label{fig:theory_postprocess_incorrect_simplification}
+\end{wrapfigure}
+Da es sich bei den Liniensegmenten um reguläre polygonale Linien handelt, liegt es nahe, einen etablierten Algorithmus zur Kurvenglättung zu verwenden.
+Douglas-Peucker's Methode ist hierbei der bekannteste Algorithmus (siehe \autoref{sec:essentials_douglas_peucker}), der jedoch leider nicht die Breite der Linien betrachtet.
+Dies kann zu Problemen führen, falls zum Beispiel mehrere Linienpunkte auf einer Geraden liegen, aber die Linienbreite schwankt.
+Eine derartige Entfernung der Linienpunkte würde dann beispielsweise den optischen Fehler \textcolor{gray}{\textunicode{▨}} in \autoref{fig:theory_postprocess_incorrect_simplification} hervorrufen.\footnote{\textunicode{○}~Linienpunkt mit seiner Strichstärke als Kreis\enskip\textcolor{gray}{\textunicode{■}}~Der zu zeichnende Linienzug}
+Es ist deshalb notwendig, den Algorithmus an die Bedürfnisse der vorliegenden Arbeit anzupassen.
+\wrapfigureunfix{}
+
+Die exakte Berechnung der Fläche \textcolor{gray}{\textunicode{▨}} ist allerdings signifikant komplizierter als die Berechnung des einfachen lotrechten Abstands im Douglas-Peucker Algorithmus.
+Deshalb wird sich mit einer Annäherung beholfen und nur der Unterschied \textcolor{gray}{\textunicode{▨}}, der auf der lotrechten Linie zu finden ist, berechnet (vergleiche \autoref{fig:theory_postprocess_douglas_peucker} versus \autoref{fig:theory_postprocess_thesis}).
+Dies macht es möglich, die Linienbreite als Metrik ohne große Änderungen in den Douglas-Peucker-Algorithmus zu integrieren.
+
+\mbox{}
+
+\begin{figure}[ht]
+    \centering
+    \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=3cm]{images/theory_postprocess_overview}
+    \caption{Beispiel einer Linie mit variierender Breite}%
+    \label{fig:theory_postprocess_overview}
+\end{figure}
+
+\wrapfigurefix{0bp}
+\begin{wrapfigure}{r}{4.6cm}
+    \centering
+    \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=2.3cm]{images/theory_postprocess_overview_poi}
+    \caption{Relevanter Ausschnitt um \(B\)}%
+    \label{fig:theory_postprocess_overview_poi}
+\end{wrapfigure}
+Angenommen es sei der Linienabschnitt in \autoref{fig:theory_postprocess_overview} als Problemstellung gegeben, bei welcher entschieden werden muss, ob Punkt \(B\) weggelassen werden darf.
+Der für die Entscheidung relevante Bereich wurde hierbei Schwarz eingerahmt und wird im Folgenden näher betrachtet (\autoref{fig:theory_postprocess_overview_poi}).
+\wrapfigureunfix{}
+
+Bei einer regulären Anwendung des Douglas-Peucker Algorithmus würde hierbei nun der lotrechte Abstand \(d\) zwischen dem Punkt \(B\) und der Linie \(\overline{A\,C}\) berechnet werden (\autoref{fig:theory_postprocess_douglas_peucker}).
+In der vorliegenden Arbeit hingegen wird der Fehler \(e = e_1 + e_2\) gesucht.
+
+\begin{figure}
+    \centering
+    \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=4cm]{images/theory_postprocess_douglas_peucker}
+    \caption{Fehler \(d\) nach Douglas-Peucker}%
+    \label{fig:theory_postprocess_douglas_peucker}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includesvg[inkscapelatex=false,inkscapearea=nocrop,height=5cm]{images/theory_postprocess_thesis}
+    \caption{Der zu ermittelnde Fehler \(e_{1,2}\)}%
+    \label{fig:theory_postprocess_thesis}
+\end{figure}
+
+Anhand der \autoref{fig:theory_postprocess_thesis} kann bereits abgeleitet werden:
+\begin{align}
+    d, r, r' &\in ℝ_{≥0} \\[3mm]
+    e &= e_1 + e_2 \\
+    e_1 &= |-r' + r - d| \\
+    e_2 &= |r' - r - d| \\
+    e_{1,2} &= |\pm(r' - r) - d| \\
+    e_{2,1} &= |d \mp (r' - r)|
+\end{align}
+
+Die Berechnung des lotrechten Abstands \(d\) ist bereits durch den Douglas-Peucker Algorithmus bekannt.
+\(r\) ist weiterhin durch den Radius des Linienpunktes gegeben und wurde im \autoref{sec:theory_segmentation} ermittelt.
+\(r'\) jedoch sei als der Linienradius definiert, welcher gezeichnet werden würde, falls dieser Linienabschnitt tatsächlich vereinfacht wird.
+Er lässt sich beispielsweise als die lineare Interpolation zwischen den Radien des ersten und letzten Linienpunktes im aktuell zu glättenden Segment \(S\) mit den Radien \(R\) ermitteln.
+Die Berechnung von \(r'\) findet hierbei an der Stelle des bereits für \(d\) ermittelten Lotfußpunkt \(p'\) statt:
+\begin{align}
+    S &= (P_1, \ldots, P, \ldots, P_n) \\
+    R &= (r_1, \ldots, r, \ldots, r_n) \\[3mm]
+    \overrightarrow{n} &= \frac{\overrightarrow{P_1 P_n}}{\left\|\overrightarrow{P_1 P_n}\right\|} \\
+    \overrightarrow{p'} &= \left(\overrightarrow{P_1 P} \cdot \overrightarrow{n} \right) \cdot \overrightarrow{n} \\
+    r' &= \frac{\left\|\overrightarrow{p'}\right\|}{\left\|\overrightarrow{P_1 P_n}\right\|} \cdot (r_n - r_1) + r_1
+\end{align}
+
+Es sei gezeigt, dass:
+\begin{align}
+    a &\in ℝ_{≥0} \\
+    β &\in ℝ \\[3mm]
+    |β| &= \begin{cases}
+         β & \text{wenn } β ≥ 0 \\
+        -β & \text{ansonsten}
+    \end{cases} \\
+    |a - β| + |a + β| &= \begin{cases}
+        \big|a - |β|\big| + \big|a + |β|\big| & \text{wenn } β ≥ 0 \\
+        \big|a + |β|\big| + \big|a - |β|\big| & \text{ansonsten}
+    \end{cases} \\
+                      &= \big|a - |β|\big| + \big|a + |β|\big|
+\end{align}
+
+Hierdurch folgt:
+\begin{align}
+    e &= |d - (r' - r)| + |d + (r' - r)| \\
+      &= \big|d - |r' - r|\big| + \big|d + |r' - r|\big| \\[3mm]
+    Δr &= |r' - r| \\
+    \label{eq:theory_postprocess_abs}
+    e &= \big|d - Δr\big| + \big|d + Δr\big|
+\end{align}
+
+Weiterhin seien:
+\begin{align}
+    a, b, x &\in ℝ_{≥0} \\[3mm]
+    \max(a, b) &= \begin{cases}
+        a & \text{wenn } a ≥ b \\
+        b & \text{ansonsten}
+    \end{cases} \\
+    \max(a, b) + x &= \max(a + x, b + x) \\
+    \max(a, b) \cdot x &= \max(a \cdot x, b \cdot x) \\[3mm]
+    |x| &= \begin{cases}
+         x & \text{wenn } x ≥ 0 \\
+        -x & \text{ansonsten}
+    \end{cases} \\
+        &= \max(x, -x) \\[3mm]
+    |a - b| + |a + b| &= |a - b| + a + b \\
+                      &= \max(a - b, -a + b) + a + b \\
+                      &= \max(a - b + a + b, -a + b + a + b) \\
+                      &= \max(2 \cdot a, 2 \cdot b) \\
+                      &= 2 \cdot \max(a, b)
+\end{align}
+
+Dann lässt sich letztendlich aus \autoref{eq:theory_postprocess_abs} schlussfolgern:
+\begin{align}
+    e &= 2 \cdot \max(d, Δr) \\
+    \label{eq:theory_postprocess_max}
+      &= 2 \cdot \max(d, |r' - r|)
+\end{align}
+
+Die \autoref{eq:theory_postprocess_max} lässt sich nun ohne größere Änderungen des ursprünglichen Douglas-Peucker Algorithmus leicht in existierende Implementierungen integrieren und ersetzt dort den lotrechten Abstand als Fehlerberechnung.
+Wendet man solch eine Kurvenglättung auf alle ermittelten Liniensegmente an, so kann der Großteil der Knotenpunkte entfernt und der zur Darstellung notwendige Rechenaufwand voraussichtlich proportional reduziert werden.
+
+\clearpage
+\section{Finaler Entwurf}%
+\label{sec:theory_flow}
+
+\autoref{fig:theory_flow} zeigt den finalen Ablauf des in diesem Kapitel erstellten Vektorisierungsalgorithmus.
+Im nachfolgenden \autoref{cha:implementation} wird dieser nun als Programmbibliothek umgesetzt.
+
+\begin{figure}[htbp]
+    \centering
+    \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=\textwidth]{images/theory_flow}
+    \caption{Finaler Entwurf --- Prozessablauf}%
+    \label{fig:theory_flow}
+\end{figure}

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 116 54"
+   width="116"
+   height="54"
+   version="1.1"
+   id="svg124"
+   sodipodi:docname="theory_postprocess_with_simplification.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata128">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2518"
+     inkscape:window-height="1376"
+     id="namedview126"
+     showgrid="false"
+     inkscape:zoom="3.2"
+     inkscape:cx="110.42983"
+     inkscape:cy="133.88391"
+     inkscape:window-x="42"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg124" />
+  <defs
+     id="defs5">
+    <marker
+       id="dot"
+       viewBox="0 0 10 10"
+       refX="5"
+       refY="5"
+       markerWidth="5"
+       markerHeight="5">
+      <circle
+         cx="5"
+         cy="5"
+         r="5"
+         id="circle2"
+         style="fill:#ffffff;stroke:#000000" />
+    </marker>
+  </defs>
+  <style
+     id="style7">
+#c {
+    pointer-events: none;
+    fill: none;
+    stroke: white;
+    stroke-width: 0.5;
+    marker-start: url(#dot);
+    marker-mid: url(#dot);
+    marker-end: url(#dot);
+}
+</style>
+  <g
+     id="g870"
+     transform="translate(-185,-190)">
+    <polygon
+       id="polygon47"
+       points="188.75,235.008 189.25,242.992 205.25,241.992 204.75,234.008 " />
+    <polygon
+       id="polygon49"
+       points="202.781,234.672 207.219,241.328 210.219,239.328 205.781,232.672 " />
+    <polygon
+       id="polygon51"
+       points="207.602,232.02 208.398,239.98 218.398,238.98 217.602,231.02 " />
+    <polygon
+       id="polygon53"
+       points="216.735,231.205 219.265,238.795 240.265,231.795 237.735,224.205 " />
+    <polygon
+       id="polygon55"
+       points="237.453,224.311 240.547,231.689 271.729,219.124 268.271,210.876 " />
+    <polygon
+       id="polygon57"
+       points="267.317,211.422 272.683,218.578 280.546,212.394 275.454,205.606 " />
+    <polygon
+       id="polygon59"
+       points="278,204.757 278,213.243 280,213.123 280,204.877 " />
+    <polygon
+       id="polygon61"
+       points="276.312,207.156 283.688,210.844 285,209 277,205 " />
+    <polygon
+       id="polygon63"
+       points="281,202.528 281,211.472 283,211.472 283,202.528 " />
+    <polygon
+       id="polygon65"
+       points="279.967,203.714 286.033,210.286 299.391,198.674 292.609,191.326 " />
+    <circle
+       id="circle95"
+       r="4"
+       cy="239"
+       cx="189" />
+    <circle
+       id="circle97"
+       r="4"
+       cy="238"
+       cx="205" />
+    <circle
+       id="circle99"
+       r="4"
+       cy="236"
+       cx="208" />
+    <circle
+       id="circle101"
+       r="4"
+       cy="235"
+       cx="218" />
+    <circle
+       id="circle103"
+       r="4"
+       cy="228"
+       cx="239" />
+    <circle
+       id="circle105"
+       r="4.4720001"
+       cy="215"
+       cx="270" />
+    <circle
+       id="circle107"
+       r="4.243"
+       cy="209"
+       cx="278" />
+    <circle
+       id="circle109"
+       r="4.1230001"
+       cy="209"
+       cx="280" />
+    <circle
+       id="circle111"
+       r="4.4720001"
+       cy="207"
+       cx="281" />
+    <circle
+       id="circle113"
+       r="4.4720001"
+       cy="207"
+       cx="283" />
+    <circle
+       id="circle115"
+       r="5"
+       cy="195"
+       cx="296" />
+    <polyline
+       id="c2"
+       points="189,239 205,238 208,236 218,235 239,228 270,215 278,209 280,209 281,207 283,207 296,195"
+       style="fill:none;stroke:#ffffff;stroke-width:0.5;marker-start:url(#dot);marker-mid:url(#dot);marker-end:url(#dot)" />
+  </g>
+</svg>

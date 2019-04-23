@@ -1,0 +1,170 @@
+\documentclass[
+    BCOR=2cm,
+    DIV=14,
+    fontsize=12bp,
+    footsepline=true,
+    headsepline=true,
+    listof=numbered,
+    twoside=semi,
+    version=last,
+]{scrbook}
+
+% KOMA Setup
+\RedeclareSectionCommand[beforeskip=0pt]{chapter}
+
+% Language Setup
+\usepackage{polyglossia}
+\setdefaultlanguage[spelling=new,babelshorthands=true]{german}
+
+% Fonts Setup
+\usepackage{lmodern}
+\usepackage{fontspec}
+\setmonofont{Consolas}[LetterSpace=-0.5,Scale=0.75]
+\usepackage[
+    onehalfspacing,
+    nodisplayskipstretch,
+]{setspace}
+\directlua{
+    % luaotfload has a predefined keepligature function at the time of writing.
+    % microtype will warn about the function being overwritten, which is not really interesting though.
+    luaotfload.letterspace.keepligature = false
+}
+\usepackage[
+    activate={true,nocompatibility}, % Enable Protrusion/Expansion refinements
+    babel=true, % Try to use localized informations
+    final, % Ignore the global draft option
+    tracking=true, % Enable letter spacing refinements
+]{microtype}
+
+% Packages that must be loaded before general ones
+\usepackage[
+    outputdir=build,
+]{minted}
+\setminted[cpp]{
+    baselinestretch=1,
+    linenos=true,
+}
+
+% General packages
+\usepackage{booktabs}
+\usepackage{csquotes}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{subcaption}
+\usepackage{svg}
+\usepackage{tabu}
+\usepackage{wrapfig}
+
+% Packages that must be loaded after general ones
+\usepackage[
+    warnings-off={mathtools-colon,mathtools-overbracket},
+]{unicode-math}
+\usepackage[
+    binary-units=true,
+    locale=DE,
+]{siunitx}
+
+% Remove vertical space between enumeration items
+\usepackage[shortlabels]{enumitem}
+\setlist[itemize]{noitemsep}
+\setlist[enumerate]{noitemsep}
+
+% hyperref strongly suggests loading it as the last package.
+% Only few packages are an exception to this rule. See here:
+%   https://tex.stackexchange.com/q/1863
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    german,
+    pdfauthor={Leonard Hecker},
+    unicode=true,
+}
+
+% If biblatex is loaded after hyperref, links will be created.
+\usepackage[
+    backend=biber,
+    block=ragged,
+    doi=false,
+    eprint=false,
+    sorting=nyt, % sort by name, year, title
+    sortlocale=de_DE,
+    style=numeric-comp, % cite using numbers
+]{biblatex}
+\addbibresource{main.bib}
+
+% Fixes various issues of KOMA-script with other packages.
+\usepackage{scrhack}
+
+% HTW Dresden requires 1.25cm of head/foot skip.
+\setlength{\headsep}{1.25cm}
+\setlength{\skip\footins}{1.25cm}
+
+% \unicodefont will make it possible to render certain uncommon unicode symbols.
+\newfontfamily{\unicodefont}{DejaVu Sans}[Scale=MatchLowercase]
+\DeclareTextFontCommand{\textunicode}{\unicodefont}
+
+% Disable the old-fashioned addition of extra spacing after the end of a sentence.
+\frenchspacing
+
+% Reduce the amount of hyphenations, while allowing far greater leeway when stretching a line.
+\tolerance=10000
+\hbadness=10000
+\hyphenpenalty=4000
+
+% Remove indentation for wrapfigure captions.
+\captionsetup{
+    subrefformat=parens,
+}
+\captionsetup[wrapfigure]{
+    format=plain,
+    subrefformat=parens,
+}
+
+% Swap paragraph indentation with a skip.
+\setlength{\parindent}{0bp}
+\setlength{\parskip}{6bp}
+
+% Reduce tabu's line height by a bit compared to regular text.
+\setlength{\tabulinesep}{3bp}
+
+% A hack to make wrapfigure align with the top of the paragraph's first line.
+\setlength{\intextsep}{12bp}
+\newcommand{\wrapfigurefix}[1]{\setlength{\intextsep}{#1}}
+\newcommand{\wrapfigureunfix}{\setlength{\intextsep}{12bp}}
+
+
+% Translations for listings
+\providecommand*{\listingautorefname}{Programmausdruck}
+\renewcommand{\listingscaption}{Programmausdruck}
+
+% Some document specific commands
+\newcommand{\ditto}{---\raisebox{-0.5ex}{''}---}
+\newcommand{\systemfootnote}{\footnote{Linux; \textsc{gcc} 8.3 mit \texttt{-Ofast}; i7--8700k @ \SI{4.2}{\giga\hertz}; DDR4 @ \SI{3.2}{\giga\hertz}, 16--18--18--38}}
+
+\begin{document}
+
+% Some options (like the following) are being set at \begin{document}.
+% --> Set them now.
+\sloppy
+\setlength{\abovedisplayskip}{3bp}
+\setlength{\belowdisplayskip}{6bp}
+\setlength{\abovedisplayshortskip}{3bp}
+\setlength{\belowdisplayshortskip}{6bp}
+
+\frontmatter{}
+\include{frontmatter}
+
+\mainmatter{}
+\include{mainmatter_introduction}
+\include{mainmatter_essentials}
+\include{mainmatter_theory}
+\include{mainmatter_implementation}
+\include{mainmatter_results}
+\include{mainmatter_summary}
+
+\appendix{}
+\include{appendix}
+\include{plagiarism}
+
+\end{document}

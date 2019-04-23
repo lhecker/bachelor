@@ -1,0 +1,62 @@
+\printbibliography[heading=bibnumbered]
+\listoffigures{}
+
+\chapter{Anhang}
+
+\begin{figure}[htbp]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{images/results_case_shadow}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=\textwidth]{images/results_case_shadow}
+    \end{subfigure}
+    \caption{Vektorisierung eines Testbilds mit Schattenbildung am Blattrand (\(4032\text{px}\times3024\text{px}\))}%
+    \label{fig:results_case_shadow}
+\end{figure}
+
+\begin{figure}[htbp]
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{images/results_case_reflection}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=\textwidth]{images/results_case_reflection}
+    \end{subfigure}
+    \caption{Vektorisierung eines Testbilds mit ungleichmäßiger Ausleuchtung und hoher Linienbreite (\(4032\text{px}\times3024\text{px}\))}%
+    \label{fig:results_case_reflection}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includegraphics[width=\textwidth]{images/results_case_complex}
+    \end{subfigure}
+
+    \begin{subfigure}[t]{0.8\textwidth}
+        \includesvg[inkscapelatex=false,inkscapearea=nocrop,width=\textwidth]{images/results_case_complex}
+    \end{subfigure}
+    \caption{Vektorisierung eines Testbilds mit hoher Komplexität (\(4032\text{px}\times3024\text{px}\))}%
+    \label{fig:results_case_complex}
+\end{figure}
+
+\clearpage
+\begin{listing}[htbp]
+    \inputminted{cpp}{mainmatter_essentials_distance_transform_brute_force.cpp}
+    \caption{Brute-Force Berechnung der exakten Euklidischen Distanztransformation}%
+    \label{lst:essentials_distance_transform_brute_force}
+\end{listing}
+
+\clearpage
+\begin{listing}[htbp]
+    \inputminted{cpp}{mainmatter_implementation_sauvola_baseline.cpp}
+    \caption[Implementation von Sauvola's Binarisierungsalgorithmus durch OpenCV]{Implementation von Sauvola's Binarisierungsalgorithmus durch OpenCV~\cite[\texttt{modules/ximgproc/src/thinning.cpp}]{opencv_contrib_source} (auf das wesentliche Reduziert)}%
+    \label{lst:implementation_sauvola_baseline}
+\end{listing}
+
+\clearpage
+\begin{listing}[htbp]
+    \inputminted{cpp}{mainmatter_implementation_sauvola_optimized.cpp}
+    \caption{Optimitierte Implementation von Sauvola's Binarisierungsalgorithmus}%
+    \label{lst:implementation_sauvola_optimized}
+\end{listing}

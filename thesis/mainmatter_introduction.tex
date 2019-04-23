@@ -1,0 +1,16 @@
+\chapter{Einleitung}
+
+Linienzeichnungen, beziehungsweise Skizzierungen, werden auch heute noch häufig \enquote{analog} auf zum Beispiel Papier, Tafeln oder Whiteboards erstellt.
+Die Anwendung Mind-Objects jedoch erlaubt es einem Nutzer dies digital auf einem Mobilgerät zu tun.
+Anders als bei üblichen Zeichenprogrammen werden die hierbei gezeichneten Linien aber nicht als Raster-, sondern als Vektorgrafik aufgezeichnet.
+Hierdurch wird es dem Nutzer ermöglicht, auch nachträglich noch beliebige Teile der Zeichnung zu skalieren, zu verschieben oder gar zu löschen, wodurch ein hohes Maß an Flexibilität während der Erstellung der Zeichnung erhalten bleibt.
+Im Kontrast dazu stehen \enquote{traditionelle} Zeichnungen, in denen derartige, nachträgliche Änderungen nur schwer, oder gar nicht möglich sind.
+
+Bisher mangelt es der Anwendung Mind-Objects jedoch noch an der Fähigkeit eben jene, potentiell bereits existierenden, \enquote{analogen} Zeichnungen als Vektorgrafik importieren zu können, damit sie nahtlos weiterverarbeitet und transformiert werden können.
+Hierfür ist es denkbar, dass es dem Nutzer ermöglicht wird, ein Foto mithilfe der Anwendung aufzunehmen, welches daraufhin vektorisiert wird.
+
+Die vorliegende Arbeit beschäftigt sich im Detail mit Methoden zur Vektorisierung solcher Fotografien.
+Ziel ist es, eine Programmbibliothek zu entwickeln, welche später in die Mobilanwendung integriert werden kann und den gesamten Prozessablauf von einer Fotografie bis hin zur Vektorgrafik implementiert.
+Die hierbei vektorisierten Linien sollen das optische Bild der ursprünglichen Fotografie möglichst getreu widerspiegeln, weshalb es unabdingbar ist, dass die Form und somit die Strichstärke der Linien erhalten bleibt.
+Weiterhin ist es wichtig, dass nur so viele Knotenpunkte wie notwendig für die berechneten Linien verwendet werden, damit die Darstellungsgeschwindigkeit der Anwendung nicht negativ beeinflusst wird.
+Letztendlich müssen Algorithmen gewählt werden, welche auch bei der Verwendung auf CPUs von Mobilgeräten ausreichend schnell sind.

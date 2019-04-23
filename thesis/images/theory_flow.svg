@@ -1,0 +1,3116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="2560.7188"
+   height="1370.8751"
+   viewBox="0 0 2560.7187 1370.8751"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="theory_flow.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker13214"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         inkscape:connector-curvature="0"
+         id="path13212"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6)" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker4040"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path4038"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker3862"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:collect="always">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path3860"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker3690"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path3688"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker3680"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path3678"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path961"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       markerHeight="5"
+       markerWidth="5"
+       refY="5"
+       refX="5"
+       viewBox="0 0 10 10"
+       id="dot-8">
+      <circle
+         id="circle9232"
+         r="5"
+         cy="5"
+         cx="5"
+         style="fill:#ffffff;stroke:#000000" />
+    </marker>
+    <marker
+       markerHeight="5"
+       markerWidth="5"
+       refY="5"
+       refX="5"
+       viewBox="0 0 10 10"
+       id="dot-1">
+      <circle
+         id="circle11074"
+         r="5"
+         cy="5"
+         cx="5"
+         style="fill:#ffffff;stroke:#000000" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="2583.2316"
+     inkscape:cy="1010.3613"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     units="px"
+     inkscape:object-nodes="true"
+     inkscape:snap-center="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-nodes="true"
+     inkscape:object-paths="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:snap-others="true"
+     inkscape:snap-intersection-paths="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(2.0398173e-7,4.113823)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       x="720"
+       y="780.88623"
+       id="text865"><tspan
+         sodipodi:role="line"
+         id="tspan863"
+         x="720"
+         y="780.88623"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988">Sauvola's</tspan><tspan
+         sodipodi:role="line"
+         x="720"
+         y="860.88623"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988"
+         id="tspan1614">Binarisierung</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:9.99999905;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker3862)"
+       d="m 360,553.38627 164,-4e-5"
+       id="path924"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:9.99999905;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker3690)"
+       d="m 900,553.38623 c 178.8552,0 -77.08666,-304.99997 164,-304.99997"
+       id="path926"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:9.99999905;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker3680)"
+       d="m 900,553.38623 c 177.3374,0 -82.35128,304.99999 164,304.99999"
+       id="path928"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker4040)"
+       d="m 1440,248.38626 c 178.0516,0 -98.4654,304.99997 164,304.99997"
+       id="path930"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="opacity:1;fill:none;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow2Mend)"
+       d="m 1440,858.3862 c 179.5188,0 -94.8651,-304.99997 164,-304.99997"
+       id="path932"
+       inkscape:connector-curvature="0"
+       inkscape:label="path932"
+       sodipodi:nodetypes="cc" />
+    <g
+       id="g829"
+       transform="matrix(3.7795276,0,0,3.7795275,4.9999997,-126.63332)">
+      <rect
+         y="139.57291"
+         x="-1.3229166"
+         height="80.697914"
+         width="95.25"
+         id="rect819"
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:81.19974518;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+      <image
+         xlink:href="smiley.jpg"
+         width="92.604164"
+         height="78.052086"
+         preserveAspectRatio="none"
+         id="image956"
+         x="0"
+         y="140.89583" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       x="180"
+       y="780.88629"
+       id="text861"><tspan
+         sodipodi:role="line"
+         id="tspan859"
+         x="180"
+         y="780.88629"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988">Original</tspan></text>
+    <g
+       id="g833"
+       transform="matrix(3.7795276,0,0,3.7795275,20.000014,-126.63347)">
+      <rect
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:81.19974518;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="rect821"
+         width="95.25"
+         height="80.697914"
+         x="137.58333"
+         y="139.57292" />
+      <image
+         xlink:href="essentials_binarization_sauvola.png"
+         width="92.604164"
+         height="78.052086"
+         preserveAspectRatio="none"
+         id="image923"
+         x="138.90625"
+         y="140.89583" />
+    </g>
+    <g
+       id="g841"
+       transform="matrix(3.7795276,0,0,3.7795275,34.999932,-136.63342)">
+      <rect
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:81.19974518;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="rect825"
+         width="95.25"
+         height="80.697914"
+         x="276.48959"
+         y="61.520832" />
+      <image
+         xlink:href="theory_preprocess_skeleton.png"
+         width="92.604164"
+         height="78.052086"
+         preserveAspectRatio="none"
+         id="image945"
+         x="277.8125"
+         y="62.843746"
+         style="image-rendering:optimizeSpeed" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       x="1260"
+       y="475.88626"
+       id="text873"><tspan
+         sodipodi:role="line"
+         id="tspan871"
+         x="1260"
+         y="475.88626"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988">Zhang-Suen</tspan><tspan
+         sodipodi:role="line"
+         x="1260"
+         y="555.88623"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988"
+         id="tspan1618">Thinning</tspan></text>
+    <g
+       id="g837"
+       transform="matrix(3.7795276,0,0,3.7795275,34.999932,-116.63343)">
+      <rect
+         y="217.625"
+         x="276.48959"
+         height="80.697914"
+         width="95.25"
+         id="rect823"
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:81.19974518;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+      <image
+         xlink:href="theory_preprocess_distance.png"
+         width="92.604164"
+         height="78.052086"
+         preserveAspectRatio="none"
+         id="image934"
+         x="277.8125"
+         y="218.94792" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       x="1260"
+       y="1085.8862"
+       id="text869"><tspan
+         sodipodi:role="line"
+         x="1260"
+         y="1085.8862"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988"
+         id="tspan1616">Euklidische</tspan><tspan
+         sodipodi:role="line"
+         x="1260"
+         y="1165.8862"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988"
+         id="tspan1621">Distanztransf.</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       x="1800"
+       y="780.88623"
+       id="text877"><tspan
+         sodipodi:role="line"
+         x="1800"
+         y="780.88623"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.99999988"
+         id="tspan920">Segmentierung</tspan></text>
+    <g
+       id="g13136"
+       transform="translate(-1292.7007,76.336365)">
+      <rect
+         y="324.54987"
+         x="2912.7007"
+         height="305"
+         width="360"
+         id="rect4936"
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:306.89666748;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
+      <rect
+         y="329.54974"
+         x="2917.7009"
+         height="295"
+         width="350"
+         id="rect9230"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none" />
+      <g
+         transform="translate(2917.6886,329.54989)"
+         id="g11000">
+        <g
+           id="g10398">
+          <g
+             id="p0">
+            <polygon
+               points="243.385,62.385 243.472,60.472 234.528,51.528 232.615,51.615 "
+               id="polygon9237" />
+            <polygon
+               points="246.062,58 245.616,57 230.384,57 229.938,58 "
+               id="polygon9239" />
+            <polygon
+               points="246.602,59 246.062,58 229.938,58 229.398,59 "
+               id="polygon9241" />
+            <polygon
+               points="246.544,60 246.602,59 229.398,59 229.456,60 "
+               id="polygon9243" />
+            <circle
+               cx="239"
+               cy="56"
+               r="6.3249998"
+               id="circle9245" />
+            <circle
+               cx="238"
+               cy="57"
+               r="7.6160002"
+               id="circle9247" />
+            <circle
+               cx="238"
+               cy="58"
+               r="8.0620003"
+               id="circle9249" />
+            <circle
+               cx="238"
+               cy="59"
+               r="8.6020002"
+               id="circle9251" />
+            <circle
+               cx="238"
+               cy="60"
+               r="8.5439997"
+               id="circle9253" />
+          </g>
+          <g
+             id="p1">
+            <circle
+               cx="98"
+               cy="62"
+               r="8"
+               id="circle9256" />
+          </g>
+          <g
+             id="p2">
+            <polygon
+               points="57,186 56.606,185 49.394,185 49,186 "
+               id="polygon9259" />
+            <polygon
+               points="57.162,183.838 55.828,183.172 50.172,188.828 50.838,190.162 "
+               id="polygon9261" />
+            <polygon
+               points="58.162,184.838 57.162,183.838 50.838,190.162 51.838,191.162 "
+               id="polygon9263" />
+            <polygon
+               points="59.472,189 59.472,188 50.528,188 50.528,189 "
+               id="polygon9265" />
+            <polygon
+               points="59.123,190 59.472,189 50.528,189 50.877,190 "
+               id="polygon9267" />
+            <polygon
+               points="59.536,187.464 57.915,187.085 52.085,192.915 52.464,194.536 "
+               id="polygon9269" />
+            <polygon
+               points="60.162,188.838 59.536,187.464 52.464,194.536 53.838,195.162 "
+               id="polygon9271" />
+            <polygon
+               points="62,193 61.472,192 52.528,192 52,193 "
+               id="polygon9273" />
+            <polygon
+               points="61.536,190.464 60.536,189.464 53.464,196.536 54.464,197.536 "
+               id="polygon9275" />
+            <polygon
+               points="62.472,195 63,194 53,194 53.528,195 "
+               id="polygon9277" />
+            <polygon
+               points="62.536,192.464 61.162,191.838 54.838,198.162 55.464,199.536 "
+               id="polygon9279" />
+            <polygon
+               points="64,197 64,196 54,196 54,197 "
+               id="polygon9281" />
+            <polygon
+               points="60,192.877 59,192 59,202 60,201.123 "
+               id="polygon9283" />
+            <polygon
+               points="64.472,198 64.123,197 55.877,197 55.528,198 "
+               id="polygon9285" />
+            <polygon
+               points="64.472,199 64.472,198 55.528,198 55.528,199 "
+               id="polygon9287" />
+            <polygon
+               points="61,194.877 60,194.528 60,203.472 61,203.123 "
+               id="polygon9289" />
+            <polygon
+               points="65.243,200 65.123,199 56.877,199 56.757,200 "
+               id="polygon9291" />
+            <polygon
+               points="64.606,201 65.243,200 56.757,200 57.394,201 "
+               id="polygon9293" />
+            <polygon
+               points="62,196.757 61,197.394 61,204.606 62,205.243 "
+               id="polygon9295" />
+            <polygon
+               points="66.123,202 66.243,201 57.757,201 57.877,202 "
+               id="polygon9297" />
+            <polygon
+               points="66.162,199.838 64.915,199.085 59.085,204.915 59.838,206.162 "
+               id="polygon9299" />
+            <polygon
+               points="67.123,204 67.472,203 58.528,203 58.877,204 "
+               id="polygon9301" />
+            <polygon
+               points="64,199.757 63,199.877 63,208.123 64,208.243 "
+               id="polygon9303" />
+            <polygon
+               points="68.243,205 68.243,204 59.757,204 59.757,205 "
+               id="polygon9305" />
+            <polygon
+               points="65,200.757 64,200.757 64,209.243 65,209.243 "
+               id="polygon9307" />
+            <polygon
+               points="69.243,206 69.243,205 60.757,205 60.757,206 "
+               id="polygon9309" />
+            <polygon
+               points="66,201.877 65,201.757 65,210.243 66,210.123 "
+               id="polygon9311" />
+            <polygon
+               points="70.243,207 70.123,206 61.877,206 61.757,207 "
+               id="polygon9313" />
+            <polygon
+               points="70,205 69,204 63,210 64,211 "
+               id="polygon9315" />
+            <polygon
+               points="71,206 70,205 64,211 65,212 "
+               id="polygon9317" />
+            <polygon
+               points="72,207 71,206 65,212 66,213 "
+               id="polygon9319" />
+            <polygon
+               points="72.606,211 73.243,210 64.757,210 65.394,211 "
+               id="polygon9321" />
+            <polygon
+               points="70,206.757 69,207.394 69,214.606 70,215.243 "
+               id="polygon9323" />
+            <polygon
+               points="74.123,212 74.243,211 65.757,211 65.877,212 "
+               id="polygon9325" />
+            <polygon
+               points="71,207.757 70,207.877 70,216.123 71,216.243 "
+               id="polygon9327" />
+            <polygon
+               points="75,210 74,209 68,215 69,216 "
+               id="polygon9329" />
+            <polygon
+               points="76.162,210.838 75,210 69,216 69.838,217.162 "
+               id="polygon9331" />
+            <polygon
+               points="77,212 76.162,210.838 69.838,217.162 71,218 "
+               id="polygon9333" />
+            <polygon
+               points="77.915,213.085 77,212 71,218 72.085,218.915 "
+               id="polygon9335" />
+            <polygon
+               points="78.55,214.45 77.915,213.085 72.085,218.915 73.45,219.55 "
+               id="polygon9337" />
+            <polygon
+               points="77,213.394 76,213.394 76,220.606 77,220.606 "
+               id="polygon9339" />
+            <polygon
+               points="80.606,218 80.606,217 73.394,217 73.394,218 "
+               id="polygon9341" />
+            <polygon
+               points="78,213.877 77,214.394 77,221.606 78,222.123 "
+               id="polygon9343" />
+            <polygon
+               points="82.123,219 82.123,218 73.877,218 73.877,219 "
+               id="polygon9345" />
+            <polygon
+               points="79,214.757 78,214.877 78,223.123 79,223.243 "
+               id="polygon9347" />
+            <polygon
+               points="83.123,220 83.243,219 74.757,219 74.877,220 "
+               id="polygon9349" />
+            <polygon
+               points="80,215.757 79,215.877 79,224.123 80,224.243 "
+               id="polygon9351" />
+            <polygon
+               points="84,218 83,217 77,223 78,224 "
+               id="polygon9353" />
+            <polygon
+               points="84.915,219.085 84,218 78,224 79.085,224.915 "
+               id="polygon9355" />
+            <polygon
+               points="83,218.394 82,217.877 82,226.123 83,225.606 "
+               id="polygon9357" />
+            <polygon
+               points="86.915,220.085 85.55,219.45 80.45,224.55 81.085,225.915 "
+               id="polygon9359" />
+            <polygon
+               points="88,221 86.915,220.085 81.085,225.915 82,227 "
+               id="polygon9361" />
+            <polygon
+               points="86,220.394 85,219.757 85,228.243 86,227.606 "
+               id="polygon9363" />
+            <polygon
+               points="90.123,225 89.606,224 82.394,224 81.877,225 "
+               id="polygon9365" />
+            <polygon
+               points="87,220.877 86,220.877 86,229.123 87,229.123 "
+               id="polygon9367" />
+            <polygon
+               points="88,221.394 87,220.877 87,229.123 88,228.606 "
+               id="polygon9369" />
+            <polygon
+               points="91.915,223.085 90.55,222.45 85.45,227.55 86.085,228.915 "
+               id="polygon9371" />
+            <polygon
+               points="90,222 89,221.877 89,230.123 90,230 "
+               id="polygon9373" />
+            <polygon
+               points="94,227 94,226 86,226 86,227 "
+               id="polygon9375" />
+            <polygon
+               points="91,222.877 90,223 90,231 91,231.123 "
+               id="polygon9377" />
+            <polygon
+               points="92,223.394 91,222.877 91,231.123 92,230.606 "
+               id="polygon9379" />
+            <polygon
+               points="93,223.838 92,223.394 92,230.606 93,230.162 "
+               id="polygon9381" />
+            <polygon
+               points="97.123,228 96.162,227 89.838,227 88.877,228 "
+               id="polygon9383" />
+            <polygon
+               points="94,224 93,223.877 93,232.123 94,232 "
+               id="polygon9385" />
+            <polygon
+               points="98.123,229 98,228 90,228 89.877,229 "
+               id="polygon9387" />
+            <polygon
+               points="95,224.757 94,224.877 94,233.123 95,233.243 "
+               id="polygon9389" />
+            <polygon
+               points="96,225.394 95,224.757 95,233.243 96,232.606 "
+               id="polygon9391" />
+            <polygon
+               points="99.915,227.085 98.55,226.45 93.45,231.55 94.085,232.915 "
+               id="polygon9393" />
+            <polygon
+               points="98,226 97,225.877 97,234.123 98,234 "
+               id="polygon9395" />
+            <polygon
+               points="101.915,228.085 100.828,227.172 95.172,232.828 96.085,233.915 "
+               id="polygon9397" />
+            <polygon
+               points="100,226.877 99,226.877 99,235.123 100,235.123 "
+               id="polygon9399" />
+            <polygon
+               points="101,227 100,226.877 100,235.123 101,235 "
+               id="polygon9401" />
+            <polygon
+               points="105.536,228.464 103.828,228.172 98.172,233.828 98.464,235.536 "
+               id="polygon9403" />
+            <polygon
+               points="103,227.528 102,227 102,237 103,236.472 "
+               id="polygon9405" />
+            <polygon
+               points="107,233 107.472,232 98.528,232 99,233 "
+               id="polygon9407" />
+            <polygon
+               points="104,228.877 103,229 103,237 104,237.123 "
+               id="polygon9409" />
+            <polygon
+               points="105,228.528 104,228.877 104,237.123 105,237.472 "
+               id="polygon9411" />
+            <polygon
+               points="106,228.877 105,228.528 105,237.472 106,237.123 "
+               id="polygon9413" />
+            <polygon
+               points="110.162,230.838 108.915,230.085 103.085,235.915 103.838,237.162 "
+               id="polygon9415" />
+            <polygon
+               points="108,229.877 107,229.528 107,238.472 108,238.123 "
+               id="polygon9417" />
+            <polygon
+               points="111.828,232.172 110.915,231.085 105.085,236.915 106.172,237.828 "
+               id="polygon9419" />
+            <polygon
+               points="110,231 109,231 109,239 110,239 "
+               id="polygon9421" />
+            <polygon
+               points="111,230.877 110,231 110,239 111,239.123 "
+               id="polygon9423" />
+            <polygon
+               points="112,230.877 111,230.877 111,239.123 112,239.123 "
+               id="polygon9425" />
+            <polygon
+               points="113,231 112,230.877 112,239.123 113,239 "
+               id="polygon9427" />
+            <polygon
+               points="114,231 113,231 113,239 114,239 "
+               id="polygon9429" />
+            <polygon
+               points="115,231 114,231 114,239 115,239 "
+               id="polygon9431" />
+            <polygon
+               points="116,231 115,231 115,239 116,239 "
+               id="polygon9433" />
+            <polygon
+               points="120.536,232.464 118.828,232.172 113.172,237.828 113.464,239.536 "
+               id="polygon9435" />
+            <polygon
+               points="120.828,234.172 120.536,232.464 113.464,239.536 115.172,239.828 "
+               id="polygon9437" />
+            <polygon
+               points="119,233 118,233 118,241 119,241 "
+               id="polygon9439" />
+            <polygon
+               points="120,232.877 119,233 119,241 120,241.123 "
+               id="polygon9441" />
+            <polygon
+               points="121,232.877 120,232.877 120,241.123 121,241.123 "
+               id="polygon9443" />
+            <polygon
+               points="122,233 121,232.877 121,241.123 122,241 "
+               id="polygon9445" />
+            <polygon
+               points="123,233 122,233 122,241 123,241 "
+               id="polygon9447" />
+            <polygon
+               points="124,233 123,233 123,241 124,241 "
+               id="polygon9449" />
+            <polygon
+               points="125,233 124,233 124,241 125,241 "
+               id="polygon9451" />
+            <polygon
+               points="128.915,235.085 127.828,234.172 122.172,239.828 123.085,240.915 "
+               id="polygon9453" />
+            <polygon
+               points="127,233.528 126,233.877 126,242.123 127,242.472 "
+               id="polygon9455" />
+            <polygon
+               points="128,233.528 127,233.528 127,242.472 128,242.472 "
+               id="polygon9457" />
+            <polygon
+               points="129,233.877 128,233.528 128,242.472 129,242.123 "
+               id="polygon9459" />
+            <polygon
+               points="132.828,236.172 131.915,235.085 126.085,240.915 127.172,241.828 "
+               id="polygon9461" />
+            <polygon
+               points="131,234.877 130,235 130,243 131,243.123 "
+               id="polygon9463" />
+            <polygon
+               points="132,234.528 131,234.877 131,243.123 132,243.472 "
+               id="polygon9465" />
+            <polygon
+               points="133,234.877 132,234.528 132,243.472 133,243.123 "
+               id="polygon9467" />
+            <polygon
+               points="134,235 133,234.877 133,243.123 134,243 "
+               id="polygon9469" />
+            <polygon
+               points="135,235 134,235 134,243 135,243 "
+               id="polygon9471" />
+            <polygon
+               points="136,234.877 135,235 135,243 136,243.123 "
+               id="polygon9473" />
+            <polygon
+               points="137,235 136,234.877 136,243.123 137,243 "
+               id="polygon9475" />
+            <polygon
+               points="138,235 137,235 137,243 138,243 "
+               id="polygon9477" />
+            <polygon
+               points="139,234.877 138,235 138,243 139,243.123 "
+               id="polygon9479" />
+            <polygon
+               points="140,235 139,234.877 139,243.123 140,243 "
+               id="polygon9481" />
+            <polygon
+               points="141,235 140,235 140,243 141,243 "
+               id="polygon9483" />
+            <polygon
+               points="142,235 141,235 141,243 142,243 "
+               id="polygon9485" />
+            <polygon
+               points="143,235 142,235 142,243 143,243 "
+               id="polygon9487" />
+            <polygon
+               points="147.536,236.464 145.828,236.172 140.172,241.828 140.464,243.536 "
+               id="polygon9489" />
+            <polygon
+               points="145,235 144,235 144,245 145,245 "
+               id="polygon9491" />
+            <polygon
+               points="146,235.528 145,235 145,245 146,244.472 "
+               id="polygon9493" />
+            <polygon
+               points="147,235.877 146,235.528 146,244.472 147,244.123 "
+               id="polygon9495" />
+            <polygon
+               points="148,236 147,235.877 147,244.123 148,244 "
+               id="polygon9497" />
+            <polygon
+               points="149,236 148,236 148,244 149,244 "
+               id="polygon9499" />
+            <polygon
+               points="150,236 149,236 149,244 150,244 "
+               id="polygon9501" />
+            <polygon
+               points="151,236 150,236 150,244 151,244 "
+               id="polygon9503" />
+            <polygon
+               points="152,236 151,236 151,244 152,244 "
+               id="polygon9505" />
+            <polygon
+               points="153,236 152,236 152,244 153,244 "
+               id="polygon9507" />
+            <polygon
+               points="154,236 153,236 153,244 154,244 "
+               id="polygon9509" />
+            <polygon
+               points="155,236 154,236 154,244 155,244 "
+               id="polygon9511" />
+            <polygon
+               points="156,236 155,236 155,244 156,244 "
+               id="polygon9513" />
+            <polygon
+               points="157,236 156,236 156,244 157,244 "
+               id="polygon9515" />
+            <polygon
+               points="158,236 157,236 157,244 158,244 "
+               id="polygon9517" />
+            <polygon
+               points="159,236 158,236 158,244 159,244 "
+               id="polygon9519" />
+            <polygon
+               points="163.536,237.464 161.828,237.172 156.172,242.828 156.464,244.536 "
+               id="polygon9521" />
+            <polygon
+               points="161,236 160,236 160,246 161,246 "
+               id="polygon9523" />
+            <polygon
+               points="162,236 161,236 161,246 162,246 "
+               id="polygon9525" />
+            <polygon
+               points="163,236 162,236 162,246 163,246 "
+               id="polygon9527" />
+            <polygon
+               points="164,236 163,236 163,246 164,246 "
+               id="polygon9529" />
+            <polygon
+               points="165,236 164,236 164,246 165,246 "
+               id="polygon9531" />
+            <polygon
+               points="166,236 165,236 165,246 166,246 "
+               id="polygon9533" />
+            <polygon
+               points="167,236 166,236 166,246 167,246 "
+               id="polygon9535" />
+            <polygon
+               points="168,236 167,236 167,246 168,246 "
+               id="polygon9537" />
+            <polygon
+               points="169,236 168,236 168,246 169,246 "
+               id="polygon9539" />
+            <polygon
+               points="170,236 169,236 169,246 170,246 "
+               id="polygon9541" />
+            <polygon
+               points="171,236 170,236 170,246 171,246 "
+               id="polygon9543" />
+            <polygon
+               points="172,236 171,236 171,246 172,246 "
+               id="polygon9545" />
+            <polygon
+               points="173,236 172,236 172,246 173,246 "
+               id="polygon9547" />
+            <polygon
+               points="174,236 173,236 173,246 174,246 "
+               id="polygon9549" />
+            <polygon
+               points="175,236 174,236 174,246 175,246 "
+               id="polygon9551" />
+            <polygon
+               points="176,236 175,236 175,246 176,246 "
+               id="polygon9553" />
+            <polygon
+               points="177,236 176,236 176,246 177,246 "
+               id="polygon9555" />
+            <polygon
+               points="178,236 177,236 177,246 178,246 "
+               id="polygon9557" />
+            <polygon
+               points="179,236 178,236 178,246 179,246 "
+               id="polygon9559" />
+            <polygon
+               points="180,236 179,236 179,246 180,246 "
+               id="polygon9561" />
+            <polygon
+               points="181,236.528 180,236 180,246 181,245.472 "
+               id="polygon9563" />
+            <polygon
+               points="182,236.877 181,236.528 181,245.472 182,245.123 "
+               id="polygon9565" />
+            <polygon
+               points="183,237 182,236.877 182,245.123 183,245 "
+               id="polygon9567" />
+            <polygon
+               points="184,236.877 183,237 183,245 184,245.123 "
+               id="polygon9569" />
+            <polygon
+               points="181.838,236.838 181.085,238.085 186.915,243.915 188.162,243.162 "
+               id="polygon9571" />
+            <polygon
+               points="186,235 185,235.528 185,244.472 186,245 "
+               id="polygon9573" />
+            <polygon
+               points="187,235 186,235 186,245 187,245 "
+               id="polygon9575" />
+            <polygon
+               points="188,235 187,235 187,245 188,245 "
+               id="polygon9577" />
+            <polygon
+               points="186.172,236.172 184.464,236.464 191.536,243.536 191.828,241.828 "
+               id="polygon9579" />
+            <polygon
+               points="190,235 189,235 189,243 190,243 "
+               id="polygon9581" />
+            <polygon
+               points="191,235 190,235 190,243 191,243 "
+               id="polygon9583" />
+            <polygon
+               points="192,235 191,235 191,243 192,243 "
+               id="polygon9585" />
+            <polygon
+               points="193,235 192,235 192,243 193,243 "
+               id="polygon9587" />
+            <polygon
+               points="194,235 193,235 193,243 194,243 "
+               id="polygon9589" />
+            <polygon
+               points="195,234.877 194,235 194,243 195,243.123 "
+               id="polygon9591" />
+            <polygon
+               points="196,234.528 195,234.877 195,243.123 196,243.472 "
+               id="polygon9593" />
+            <polygon
+               points="197,234 196,234.528 196,243.472 197,244 "
+               id="polygon9595" />
+            <polygon
+               points="198,234 197,234 197,244 198,244 "
+               id="polygon9597" />
+            <polygon
+               points="196.172,235.172 194.464,235.464 201.536,242.536 201.828,240.828 "
+               id="polygon9599" />
+            <polygon
+               points="200,234 199,234 199,242 200,242 "
+               id="polygon9601" />
+            <polygon
+               points="201,234 200,234 200,242 201,242 "
+               id="polygon9603" />
+            <polygon
+               points="202,233.877 201,234 201,242 202,242.123 "
+               id="polygon9605" />
+            <polygon
+               points="203,233.877 202,233.877 202,242.123 203,242.123 "
+               id="polygon9607" />
+            <polygon
+               points="204,234 203,233.877 203,242.123 204,242 "
+               id="polygon9609" />
+            <polygon
+               points="205,234 204,234 204,242 205,242 "
+               id="polygon9611" />
+            <polygon
+               points="202.838,233.838 202.172,235.172 207.828,240.828 209.162,240.162 "
+               id="polygon9613" />
+            <polygon
+               points="207,232 206,232.528 206,241.472 207,242 "
+               id="polygon9615" />
+            <polygon
+               points="208,232.528 207,232 207,242 208,241.472 "
+               id="polygon9617" />
+            <polygon
+               points="204,236 203.528,237 212.472,237 212,236 "
+               id="polygon9619" />
+            <polygon
+               points="209,232 208,232 208,240 209,240 "
+               id="polygon9621" />
+            <polygon
+               points="210,232 209,232 209,240 210,240 "
+               id="polygon9623" />
+            <polygon
+               points="211,231.877 210,232 210,240 211,240.123 "
+               id="polygon9625" />
+            <polygon
+               points="212,232 211,231.877 211,240.123 212,240 "
+               id="polygon9627" />
+            <polygon
+               points="213,232 212,232 212,240 213,240 "
+               id="polygon9629" />
+            <polygon
+               points="211.172,232.172 210.172,233.172 215.828,238.828 216.828,237.828 "
+               id="polygon9631" />
+            <polygon
+               points="215,230.877 214,231 214,239 215,239.123 "
+               id="polygon9633" />
+            <polygon
+               points="216,230.877 215,230.877 215,239.123 216,239.123 "
+               id="polygon9635" />
+            <polygon
+               points="217,231 216,230.877 216,239.123 217,239 "
+               id="polygon9637" />
+            <polygon
+               points="218,231 217,231 217,239 218,239 "
+               id="polygon9639" />
+            <polygon
+               points="213.877,234 214,235 222,235 222.123,234 "
+               id="polygon9641" />
+            <polygon
+               points="219,229.528 218,229.877 218,238.123 219,238.472 "
+               id="polygon9643" />
+            <polygon
+               points="220,229.528 219,229.528 219,238.472 220,238.472 "
+               id="polygon9645" />
+            <polygon
+               points="221,229.877 220,229.528 220,238.472 221,238.123 "
+               id="polygon9647" />
+            <polygon
+               points="216.877,233 216.877,234 225.123,234 225.123,233 "
+               id="polygon9649" />
+            <polygon
+               points="222,228.528 221,228.877 221,237.123 222,237.472 "
+               id="polygon9651" />
+            <polygon
+               points="223,228.528 222,228.528 222,237.472 223,237.472 "
+               id="polygon9653" />
+            <polygon
+               points="224,228.877 223,228.528 223,237.472 224,237.123 "
+               id="polygon9655" />
+            <polygon
+               points="221.838,228.838 221.085,230.085 226.915,235.915 228.162,235.162 "
+               id="polygon9657" />
+            <polygon
+               points="226,227 225,227.528 225,236.472 226,237 "
+               id="polygon9659" />
+            <polygon
+               points="227,227 226,227 226,237 227,237 "
+               id="polygon9661" />
+            <polygon
+               points="224.838,227.838 223.464,228.464 230.536,235.536 231.162,234.162 "
+               id="polygon9663" />
+            <polygon
+               points="229,226 228,226.528 228,235.472 229,236 "
+               id="polygon9665" />
+            <polygon
+               points="230,226.528 229,226 229,236 230,235.472 "
+               id="polygon9667" />
+            <polygon
+               points="226,230 225.528,231 234.472,231 234,230 "
+               id="polygon9669" />
+            <polygon
+               points="231,225.877 230,226 230,234 231,234.123 "
+               id="polygon9671" />
+            <polygon
+               points="232,225.528 231,225.877 231,234.123 232,234.472 "
+               id="polygon9673" />
+            <polygon
+               points="233,225.877 232,225.528 232,234.472 233,234.123 "
+               id="polygon9675" />
+            <polygon
+               points="230.838,225.838 230.085,227.085 235.915,232.915 237.162,232.162 "
+               id="polygon9677" />
+            <polygon
+               points="235,224.528 234,224.528 234,233.472 235,233.472 "
+               id="polygon9679" />
+            <polygon
+               points="236,224.877 235,224.528 235,233.472 236,233.123 "
+               id="polygon9681" />
+            <polygon
+               points="233.838,224.838 233.085,226.085 238.915,231.915 240.162,231.162 "
+               id="polygon9683" />
+            <polygon
+               points="238,223.877 237,223.528 237,232.472 238,232.123 "
+               id="polygon9685" />
+            <polygon
+               points="239,224 238,223.877 238,232.123 239,232 "
+               id="polygon9687" />
+            <polygon
+               points="234.528,227 235,228 243,228 243.472,227 "
+               id="polygon9689" />
+            <polygon
+               points="240,222 239,222.528 239,231.472 240,232 "
+               id="polygon9691" />
+            <polygon
+               points="241,222.528 240,222 240,232 241,231.472 "
+               id="polygon9693" />
+            <polygon
+               points="238.838,222.838 237.838,223.838 244.162,230.162 245.162,229.162 "
+               id="polygon9695" />
+            <polygon
+               points="243,221 242,221.528 242,230.472 243,231 "
+               id="polygon9697" />
+            <polygon
+               points="244,221 243,221 243,231 244,231 "
+               id="polygon9699" />
+            <polygon
+               points="240,225 239,226 249,226 248,225 "
+               id="polygon9701" />
+            <polygon
+               points="245,221 244,221 244,229 245,229 "
+               id="polygon9703" />
+            <polygon
+               points="246,220.877 245,221 245,229 246,229.123 "
+               id="polygon9705" />
+            <polygon
+               points="244.45,221.45 243.085,222.085 248.915,227.915 249.55,226.55 "
+               id="polygon9707" />
+            <polygon
+               points="248,219.757 247,220.394 247,227.606 248,228.243 "
+               id="polygon9709" />
+            <polygon
+               points="249,219.877 248,219.757 248,228.243 249,228.123 "
+               id="polygon9711" />
+            <polygon
+               points="250,220 249,219.877 249,228.123 250,228 "
+               id="polygon9713" />
+            <polygon
+               points="246,223 246,224 254,224 254,223 "
+               id="polygon9715" />
+            <polygon
+               points="251,218.877 250,219 250,227 251,227.123 "
+               id="polygon9717" />
+            <polygon
+               points="252,218.528 251,218.877 251,227.123 252,227.472 "
+               id="polygon9719" />
+            <polygon
+               points="250,219 248.838,219.838 255.162,226.162 256,225 "
+               id="polygon9721" />
+            <polygon
+               points="254,217.528 253,217.757 253,226.243 254,226.472 "
+               id="polygon9723" />
+            <polygon
+               points="251.838,217.838 250.838,218.838 257.162,225.162 258.162,224.162 "
+               id="polygon9725" />
+            <polygon
+               points="253.172,217.172 251.838,217.838 258.162,224.162 258.828,222.828 "
+               id="polygon9727" />
+            <polygon
+               points="257,216 256,216 256,224 257,224 "
+               id="polygon9729" />
+            <polygon
+               points="258,215.877 257,216 257,224 258,224.123 "
+               id="polygon9731" />
+            <polygon
+               points="259,216 258,215.877 258,224.123 259,224 "
+               id="polygon9733" />
+            <polygon
+               points="257,216 256.172,217.172 261.828,222.828 263,222 "
+               id="polygon9735" />
+            <polygon
+               points="261,214.528 260,214.757 260,223.243 261,223.472 "
+               id="polygon9737" />
+            <polygon
+               points="262,214.877 261,214.528 261,223.472 262,223.123 "
+               id="polygon9739" />
+            <polygon
+               points="259.464,214.464 259.085,216.085 264.915,221.915 266.536,221.536 "
+               id="polygon9741" />
+            <polygon
+               points="264,213 263,213 263,223 264,223 "
+               id="polygon9743" />
+            <polygon
+               points="259.528,217 259,218 269,218 268.472,217 "
+               id="polygon9745" />
+            <polygon
+               points="265,212 264,212.528 264,221.472 265,222 "
+               id="polygon9747" />
+            <polygon
+               points="266,212.528 265,212 265,222 266,221.472 "
+               id="polygon9749" />
+            <polygon
+               points="261.877,216 261.528,217 270.472,217 270.123,216 "
+               id="polygon9751" />
+            <polygon
+               points="267,211.528 266,211.877 266,220.123 267,220.472 "
+               id="polygon9753" />
+            <polygon
+               points="268,211.528 267,211.528 267,220.472 268,220.472 "
+               id="polygon9755" />
+            <polygon
+               points="265.838,211.838 264.838,212.838 271.162,219.162 272.162,218.162 "
+               id="polygon9757" />
+            <polygon
+               points="270,210.528 269,210.528 269,219.472 270,219.472 "
+               id="polygon9759" />
+            <polygon
+               points="267.464,210.464 266.838,211.838 273.162,218.162 274.536,217.536 "
+               id="polygon9761" />
+            <polygon
+               points="268.464,209.464 267.464,210.464 274.536,217.536 275.536,216.536 "
+               id="polygon9763" />
+            <polygon
+               points="273,208.528 272,208 272,218 273,217.472 "
+               id="polygon9765" />
+            <polygon
+               points="268.877,212 268.528,213 277.472,213 277.123,212 "
+               id="polygon9767" />
+            <polygon
+               points="274,207.528 273,207.877 273,216.123 274,216.472 "
+               id="polygon9769" />
+            <polygon
+               points="275,207.528 274,207.528 274,216.472 275,216.472 "
+               id="polygon9771" />
+            <polygon
+               points="272.464,207.464 271.838,208.838 278.162,215.162 279.536,214.536 "
+               id="polygon9773" />
+            <polygon
+               points="273.838,206.838 272.464,207.464 279.536,214.536 280.162,213.162 "
+               id="polygon9775" />
+            <polygon
+               points="275,206 273.838,206.838 280.162,213.162 281,212 "
+               id="polygon9777" />
+            <polygon
+               points="279,204.528 278,204.757 278,213.243 279,213.472 "
+               id="polygon9779" />
+            <polygon
+               points="280,204.877 279,204.528 279,213.472 280,213.123 "
+               id="polygon9781" />
+            <polygon
+               points="275,208 275.877,209 284.123,209 285,208 "
+               id="polygon9783" />
+            <polygon
+               points="281,203 280,203 280,213 281,213 "
+               id="polygon9785" />
+            <polygon
+               points="276.528,207 276,208 286,208 285.472,207 "
+               id="polygon9787" />
+            <polygon
+               points="282,202 281,202.528 281,211.472 282,212 "
+               id="polygon9789" />
+            <polygon
+               points="283,202.528 282,202 282,212 283,211.472 "
+               id="polygon9791" />
+            <polygon
+               points="278,206 278.528,207 287.472,207 288,206 "
+               id="polygon9793" />
+            <polygon
+               points="284,201 283,201 283,211 284,211 "
+               id="polygon9795" />
+            <polygon
+               points="279.528,205 279,206 289,206 288.472,205 "
+               id="polygon9797" />
+            <polygon
+               points="285,200 284,200.528 284,209.472 285,210 "
+               id="polygon9799" />
+            <polygon
+               points="282.464,200.464 281.464,201.464 288.536,208.536 289.536,207.536 "
+               id="polygon9801" />
+            <polygon
+               points="283.464,199.464 282.464,200.464 289.536,207.536 290.536,206.536 "
+               id="polygon9803" />
+            <polygon
+               points="284.464,198.464 283.464,199.464 290.536,206.536 291.536,205.536 "
+               id="polygon9805" />
+            <polygon
+               points="285.464,197.464 284.464,198.464 291.536,205.536 292.536,204.536 "
+               id="polygon9807" />
+            <polygon
+               points="286.464,196.464 285.464,197.464 292.536,204.536 293.536,203.536 "
+               id="polygon9809" />
+            <polygon
+               points="287.192,195.192 286.464,196.464 293.536,203.536 294.808,202.808 "
+               id="polygon9811" />
+            <polygon
+               points="288.464,194.464 287.192,195.192 294.808,202.808 295.536,201.536 "
+               id="polygon9813" />
+            <polygon
+               points="293,193 292,193 292,203 293,203 "
+               id="polygon9815" />
+            <polygon
+               points="288,197 288,198 298,198 298,197 "
+               id="polygon9817" />
+            <polygon
+               points="294,192 293,192 293,202 294,202 "
+               id="polygon9819" />
+            <polygon
+               points="289,196 289,197 299,197 299,196 "
+               id="polygon9821" />
+            <polygon
+               points="291.464,191.464 290.464,192.464 297.536,199.536 298.536,198.536 "
+               id="polygon9823" />
+            <polygon
+               points="296,190 295,190 295,200 296,200 "
+               id="polygon9825" />
+            <circle
+               cx="53"
+               cy="185"
+               r="3.6059999"
+               id="circle9827" />
+            <circle
+               cx="53"
+               cy="186"
+               r="4"
+               id="circle9829" />
+            <circle
+               cx="54"
+               cy="187"
+               r="4.4720001"
+               id="circle9831" />
+            <circle
+               cx="55"
+               cy="188"
+               r="4.4720001"
+               id="circle9833" />
+            <circle
+               cx="55"
+               cy="189"
+               r="4.4720001"
+               id="circle9835" />
+            <circle
+               cx="55"
+               cy="190"
+               r="4.1230001"
+               id="circle9837" />
+            <circle
+               cx="56"
+               cy="191"
+               r="5"
+               id="circle9839" />
+            <circle
+               cx="57"
+               cy="192"
+               r="4.4720001"
+               id="circle9841" />
+            <circle
+               cx="57"
+               cy="193"
+               r="5"
+               id="circle9843" />
+            <circle
+               cx="58"
+               cy="194"
+               r="5"
+               id="circle9845" />
+            <circle
+               cx="58"
+               cy="195"
+               r="4.4720001"
+               id="circle9847" />
+            <circle
+               cx="59"
+               cy="196"
+               r="5"
+               id="circle9849" />
+            <circle
+               cx="59"
+               cy="197"
+               r="5"
+               id="circle9851" />
+            <circle
+               cx="60"
+               cy="197"
+               r="4.1230001"
+               id="circle9853" />
+            <circle
+               cx="60"
+               cy="198"
+               r="4.4720001"
+               id="circle9855" />
+            <circle
+               cx="60"
+               cy="199"
+               r="4.4720001"
+               id="circle9857" />
+            <circle
+               cx="61"
+               cy="199"
+               r="4.1230001"
+               id="circle9859" />
+            <circle
+               cx="61"
+               cy="200"
+               r="4.243"
+               id="circle9861" />
+            <circle
+               cx="61"
+               cy="201"
+               r="3.6059999"
+               id="circle9863" />
+            <circle
+               cx="62"
+               cy="201"
+               r="4.243"
+               id="circle9865" />
+            <circle
+               cx="62"
+               cy="202"
+               r="4.1230001"
+               id="circle9867" />
+            <circle
+               cx="63"
+               cy="203"
+               r="4.4720001"
+               id="circle9869" />
+            <circle
+               cx="63"
+               cy="204"
+               r="4.1230001"
+               id="circle9871" />
+            <circle
+               cx="64"
+               cy="204"
+               r="4.243"
+               id="circle9873" />
+            <circle
+               cx="64"
+               cy="205"
+               r="4.243"
+               id="circle9875" />
+            <circle
+               cx="65"
+               cy="205"
+               r="4.243"
+               id="circle9877" />
+            <circle
+               cx="65"
+               cy="206"
+               r="4.243"
+               id="circle9879" />
+            <circle
+               cx="66"
+               cy="206"
+               r="4.1230001"
+               id="circle9881" />
+            <circle
+               cx="66"
+               cy="207"
+               r="4.243"
+               id="circle9883" />
+            <circle
+               cx="67"
+               cy="208"
+               r="4.243"
+               id="circle9885" />
+            <circle
+               cx="68"
+               cy="209"
+               r="4.243"
+               id="circle9887" />
+            <circle
+               cx="69"
+               cy="210"
+               r="4.243"
+               id="circle9889" />
+            <circle
+               cx="69"
+               cy="211"
+               r="3.6059999"
+               id="circle9891" />
+            <circle
+               cx="70"
+               cy="211"
+               r="4.243"
+               id="circle9893" />
+            <circle
+               cx="70"
+               cy="212"
+               r="4.1230001"
+               id="circle9895" />
+            <circle
+               cx="71"
+               cy="212"
+               r="4.243"
+               id="circle9897" />
+            <circle
+               cx="72"
+               cy="213"
+               r="4.243"
+               id="circle9899" />
+            <circle
+               cx="73"
+               cy="214"
+               r="4.4720001"
+               id="circle9901" />
+            <circle
+               cx="74"
+               cy="215"
+               r="4.243"
+               id="circle9903" />
+            <circle
+               cx="75"
+               cy="216"
+               r="4.1230001"
+               id="circle9905" />
+            <circle
+               cx="76"
+               cy="217"
+               r="3.6059999"
+               id="circle9907" />
+            <circle
+               cx="77"
+               cy="217"
+               r="3.6059999"
+               id="circle9909" />
+            <circle
+               cx="77"
+               cy="218"
+               r="3.6059999"
+               id="circle9911" />
+            <circle
+               cx="78"
+               cy="218"
+               r="4.1230001"
+               id="circle9913" />
+            <circle
+               cx="78"
+               cy="219"
+               r="4.1230001"
+               id="circle9915" />
+            <circle
+               cx="79"
+               cy="219"
+               r="4.243"
+               id="circle9917" />
+            <circle
+               cx="79"
+               cy="220"
+               r="4.1230001"
+               id="circle9919" />
+            <circle
+               cx="80"
+               cy="220"
+               r="4.243"
+               id="circle9921" />
+            <circle
+               cx="81"
+               cy="221"
+               r="4.243"
+               id="circle9923" />
+            <circle
+               cx="82"
+               cy="222"
+               r="4.1230001"
+               id="circle9925" />
+            <circle
+               cx="83"
+               cy="222"
+               r="3.6059999"
+               id="circle9927" />
+            <circle
+               cx="84"
+               cy="223"
+               r="4.1230001"
+               id="circle9929" />
+            <circle
+               cx="85"
+               cy="224"
+               r="4.243"
+               id="circle9931" />
+            <circle
+               cx="86"
+               cy="224"
+               r="3.6059999"
+               id="circle9933" />
+            <circle
+               cx="86"
+               cy="225"
+               r="4.1230001"
+               id="circle9935" />
+            <circle
+               cx="87"
+               cy="225"
+               r="4.1230001"
+               id="circle9937" />
+            <circle
+               cx="88"
+               cy="225"
+               r="3.6059999"
+               id="circle9939" />
+            <circle
+               cx="89"
+               cy="226"
+               r="4.1230001"
+               id="circle9941" />
+            <circle
+               cx="90"
+               cy="226"
+               r="4"
+               id="circle9943" />
+            <circle
+               cx="90"
+               cy="227"
+               r="4"
+               id="circle9945" />
+            <circle
+               cx="91"
+               cy="227"
+               r="4.1230001"
+               id="circle9947" />
+            <circle
+               cx="92"
+               cy="227"
+               r="3.6059999"
+               id="circle9949" />
+            <circle
+               cx="93"
+               cy="227"
+               r="3.1619999"
+               id="circle9951" />
+            <circle
+               cx="93"
+               cy="228"
+               r="4.1230001"
+               id="circle9953" />
+            <circle
+               cx="94"
+               cy="228"
+               r="4"
+               id="circle9955" />
+            <circle
+               cx="94"
+               cy="229"
+               r="4.1230001"
+               id="circle9957" />
+            <circle
+               cx="95"
+               cy="229"
+               r="4.243"
+               id="circle9959" />
+            <circle
+               cx="96"
+               cy="229"
+               r="3.6059999"
+               id="circle9961" />
+            <circle
+               cx="97"
+               cy="230"
+               r="4.1230001"
+               id="circle9963" />
+            <circle
+               cx="98"
+               cy="230"
+               r="4"
+               id="circle9965" />
+            <circle
+               cx="99"
+               cy="231"
+               r="4.1230001"
+               id="circle9967" />
+            <circle
+               cx="100"
+               cy="231"
+               r="4.1230001"
+               id="circle9969" />
+            <circle
+               cx="101"
+               cy="231"
+               r="4"
+               id="circle9971" />
+            <circle
+               cx="102"
+               cy="232"
+               r="5"
+               id="circle9973" />
+            <circle
+               cx="103"
+               cy="232"
+               r="4.4720001"
+               id="circle9975" />
+            <circle
+               cx="103"
+               cy="233"
+               r="4"
+               id="circle9977" />
+            <circle
+               cx="104"
+               cy="233"
+               r="4.1230001"
+               id="circle9979" />
+            <circle
+               cx="105"
+               cy="233"
+               r="4.4720001"
+               id="circle9981" />
+            <circle
+               cx="106"
+               cy="233"
+               r="4.1230001"
+               id="circle9983" />
+            <circle
+               cx="107"
+               cy="234"
+               r="4.4720001"
+               id="circle9985" />
+            <circle
+               cx="108"
+               cy="234"
+               r="4.1230001"
+               id="circle9987" />
+            <circle
+               cx="109"
+               cy="235"
+               r="4"
+               id="circle9989" />
+            <circle
+               cx="110"
+               cy="235"
+               r="4"
+               id="circle9991" />
+            <circle
+               cx="111"
+               cy="235"
+               r="4.1230001"
+               id="circle9993" />
+            <circle
+               cx="112"
+               cy="235"
+               r="4.1230001"
+               id="circle9995" />
+            <circle
+               cx="113"
+               cy="235"
+               r="4"
+               id="circle9997" />
+            <circle
+               cx="114"
+               cy="235"
+               r="4"
+               id="circle9999" />
+            <circle
+               cx="115"
+               cy="235"
+               r="4"
+               id="circle10001" />
+            <circle
+               cx="116"
+               cy="235"
+               r="4"
+               id="circle10003" />
+            <circle
+               cx="117"
+               cy="236"
+               r="5"
+               id="circle10005" />
+            <circle
+               cx="118"
+               cy="237"
+               r="4"
+               id="circle10007" />
+            <circle
+               cx="119"
+               cy="237"
+               r="4"
+               id="circle10009" />
+            <circle
+               cx="120"
+               cy="237"
+               r="4.1230001"
+               id="circle10011" />
+            <circle
+               cx="121"
+               cy="237"
+               r="4.1230001"
+               id="circle10013" />
+            <circle
+               cx="122"
+               cy="237"
+               r="4"
+               id="circle10015" />
+            <circle
+               cx="123"
+               cy="237"
+               r="4"
+               id="circle10017" />
+            <circle
+               cx="124"
+               cy="237"
+               r="4"
+               id="circle10019" />
+            <circle
+               cx="125"
+               cy="237"
+               r="4"
+               id="circle10021" />
+            <circle
+               cx="126"
+               cy="238"
+               r="4.1230001"
+               id="circle10023" />
+            <circle
+               cx="127"
+               cy="238"
+               r="4.4720001"
+               id="circle10025" />
+            <circle
+               cx="128"
+               cy="238"
+               r="4.4720001"
+               id="circle10027" />
+            <circle
+               cx="129"
+               cy="238"
+               r="4.1230001"
+               id="circle10029" />
+            <circle
+               cx="130"
+               cy="239"
+               r="4"
+               id="circle10031" />
+            <circle
+               cx="131"
+               cy="239"
+               r="4.1230001"
+               id="circle10033" />
+            <circle
+               cx="132"
+               cy="239"
+               r="4.4720001"
+               id="circle10035" />
+            <circle
+               cx="133"
+               cy="239"
+               r="4.1230001"
+               id="circle10037" />
+            <circle
+               cx="134"
+               cy="239"
+               r="4"
+               id="circle10039" />
+            <circle
+               cx="135"
+               cy="239"
+               r="4"
+               id="circle10041" />
+            <circle
+               cx="136"
+               cy="239"
+               r="4.1230001"
+               id="circle10043" />
+            <circle
+               cx="137"
+               cy="239"
+               r="4"
+               id="circle10045" />
+            <circle
+               cx="138"
+               cy="239"
+               r="4"
+               id="circle10047" />
+            <circle
+               cx="139"
+               cy="239"
+               r="4.1230001"
+               id="circle10049" />
+            <circle
+               cx="140"
+               cy="239"
+               r="4"
+               id="circle10051" />
+            <circle
+               cx="141"
+               cy="239"
+               r="4"
+               id="circle10053" />
+            <circle
+               cx="142"
+               cy="239"
+               r="4"
+               id="circle10055" />
+            <circle
+               cx="143"
+               cy="239"
+               r="4"
+               id="circle10057" />
+            <circle
+               cx="144"
+               cy="240"
+               r="5"
+               id="circle10059" />
+            <circle
+               cx="145"
+               cy="240"
+               r="5"
+               id="circle10061" />
+            <circle
+               cx="146"
+               cy="240"
+               r="4.4720001"
+               id="circle10063" />
+            <circle
+               cx="147"
+               cy="240"
+               r="4.1230001"
+               id="circle10065" />
+            <circle
+               cx="148"
+               cy="240"
+               r="4"
+               id="circle10067" />
+            <circle
+               cx="149"
+               cy="240"
+               r="4"
+               id="circle10069" />
+            <circle
+               cx="150"
+               cy="240"
+               r="4"
+               id="circle10071" />
+            <circle
+               cx="151"
+               cy="240"
+               r="4"
+               id="circle10073" />
+            <circle
+               cx="152"
+               cy="240"
+               r="4"
+               id="circle10075" />
+            <circle
+               cx="153"
+               cy="240"
+               r="4"
+               id="circle10077" />
+            <circle
+               cx="154"
+               cy="240"
+               r="4"
+               id="circle10079" />
+            <circle
+               cx="155"
+               cy="240"
+               r="4"
+               id="circle10081" />
+            <circle
+               cx="156"
+               cy="240"
+               r="4"
+               id="circle10083" />
+            <circle
+               cx="157"
+               cy="240"
+               r="4"
+               id="circle10085" />
+            <circle
+               cx="158"
+               cy="240"
+               r="4"
+               id="circle10087" />
+            <circle
+               cx="159"
+               cy="240"
+               r="4"
+               id="circle10089" />
+            <circle
+               cx="160"
+               cy="241"
+               r="5"
+               id="circle10091" />
+            <circle
+               cx="161"
+               cy="241"
+               r="5"
+               id="circle10093" />
+            <circle
+               cx="162"
+               cy="241"
+               r="5"
+               id="circle10095" />
+            <circle
+               cx="163"
+               cy="241"
+               r="5"
+               id="circle10097" />
+            <circle
+               cx="164"
+               cy="241"
+               r="5"
+               id="circle10099" />
+            <circle
+               cx="165"
+               cy="241"
+               r="5"
+               id="circle10101" />
+            <circle
+               cx="166"
+               cy="241"
+               r="5"
+               id="circle10103" />
+            <circle
+               cx="167"
+               cy="241"
+               r="5"
+               id="circle10105" />
+            <circle
+               cx="168"
+               cy="241"
+               r="5"
+               id="circle10107" />
+            <circle
+               cx="169"
+               cy="241"
+               r="5"
+               id="circle10109" />
+            <circle
+               cx="170"
+               cy="241"
+               r="5"
+               id="circle10111" />
+            <circle
+               cx="171"
+               cy="241"
+               r="5"
+               id="circle10113" />
+            <circle
+               cx="172"
+               cy="241"
+               r="5"
+               id="circle10115" />
+            <circle
+               cx="173"
+               cy="241"
+               r="5"
+               id="circle10117" />
+            <circle
+               cx="174"
+               cy="241"
+               r="5"
+               id="circle10119" />
+            <circle
+               cx="175"
+               cy="241"
+               r="5"
+               id="circle10121" />
+            <circle
+               cx="176"
+               cy="241"
+               r="5"
+               id="circle10123" />
+            <circle
+               cx="177"
+               cy="241"
+               r="5"
+               id="circle10125" />
+            <circle
+               cx="178"
+               cy="241"
+               r="5"
+               id="circle10127" />
+            <circle
+               cx="179"
+               cy="241"
+               r="5"
+               id="circle10129" />
+            <circle
+               cx="180"
+               cy="241"
+               r="5"
+               id="circle10131" />
+            <circle
+               cx="181"
+               cy="241"
+               r="4.4720001"
+               id="circle10133" />
+            <circle
+               cx="182"
+               cy="241"
+               r="4.1230001"
+               id="circle10135" />
+            <circle
+               cx="183"
+               cy="241"
+               r="4"
+               id="circle10137" />
+            <circle
+               cx="184"
+               cy="241"
+               r="4.1230001"
+               id="circle10139" />
+            <circle
+               cx="185"
+               cy="240"
+               r="4.4720001"
+               id="circle10141" />
+            <circle
+               cx="186"
+               cy="240"
+               r="5"
+               id="circle10143" />
+            <circle
+               cx="187"
+               cy="240"
+               r="5"
+               id="circle10145" />
+            <circle
+               cx="188"
+               cy="240"
+               r="5"
+               id="circle10147" />
+            <circle
+               cx="189"
+               cy="239"
+               r="4"
+               id="circle10149" />
+            <circle
+               cx="190"
+               cy="239"
+               r="4"
+               id="circle10151" />
+            <circle
+               cx="191"
+               cy="239"
+               r="4"
+               id="circle10153" />
+            <circle
+               cx="192"
+               cy="239"
+               r="4"
+               id="circle10155" />
+            <circle
+               cx="193"
+               cy="239"
+               r="4"
+               id="circle10157" />
+            <circle
+               cx="194"
+               cy="239"
+               r="4"
+               id="circle10159" />
+            <circle
+               cx="195"
+               cy="239"
+               r="4.1230001"
+               id="circle10161" />
+            <circle
+               cx="196"
+               cy="239"
+               r="4.4720001"
+               id="circle10163" />
+            <circle
+               cx="197"
+               cy="239"
+               r="5"
+               id="circle10165" />
+            <circle
+               cx="198"
+               cy="239"
+               r="5"
+               id="circle10167" />
+            <circle
+               cx="199"
+               cy="238"
+               r="4"
+               id="circle10169" />
+            <circle
+               cx="200"
+               cy="238"
+               r="4"
+               id="circle10171" />
+            <circle
+               cx="201"
+               cy="238"
+               r="4"
+               id="circle10173" />
+            <circle
+               cx="202"
+               cy="238"
+               r="4.1230001"
+               id="circle10175" />
+            <circle
+               cx="203"
+               cy="238"
+               r="4.1230001"
+               id="circle10177" />
+            <circle
+               cx="204"
+               cy="238"
+               r="4"
+               id="circle10179" />
+            <circle
+               cx="205"
+               cy="238"
+               r="4"
+               id="circle10181" />
+            <circle
+               cx="206"
+               cy="237"
+               r="4.4720001"
+               id="circle10183" />
+            <circle
+               cx="207"
+               cy="237"
+               r="5"
+               id="circle10185" />
+            <circle
+               cx="208"
+               cy="237"
+               r="4.4720001"
+               id="circle10187" />
+            <circle
+               cx="208"
+               cy="236"
+               r="4"
+               id="circle10189" />
+            <circle
+               cx="209"
+               cy="236"
+               r="4"
+               id="circle10191" />
+            <circle
+               cx="210"
+               cy="236"
+               r="4"
+               id="circle10193" />
+            <circle
+               cx="211"
+               cy="236"
+               r="4.1230001"
+               id="circle10195" />
+            <circle
+               cx="212"
+               cy="236"
+               r="4"
+               id="circle10197" />
+            <circle
+               cx="213"
+               cy="236"
+               r="4"
+               id="circle10199" />
+            <circle
+               cx="214"
+               cy="235"
+               r="4"
+               id="circle10201" />
+            <circle
+               cx="215"
+               cy="235"
+               r="4.1230001"
+               id="circle10203" />
+            <circle
+               cx="216"
+               cy="235"
+               r="4.1230001"
+               id="circle10205" />
+            <circle
+               cx="217"
+               cy="235"
+               r="4"
+               id="circle10207" />
+            <circle
+               cx="218"
+               cy="235"
+               r="4"
+               id="circle10209" />
+            <circle
+               cx="218"
+               cy="234"
+               r="4.1230001"
+               id="circle10211" />
+            <circle
+               cx="219"
+               cy="234"
+               r="4.4720001"
+               id="circle10213" />
+            <circle
+               cx="220"
+               cy="234"
+               r="4.4720001"
+               id="circle10215" />
+            <circle
+               cx="221"
+               cy="234"
+               r="4.1230001"
+               id="circle10217" />
+            <circle
+               cx="221"
+               cy="233"
+               r="4.1230001"
+               id="circle10219" />
+            <circle
+               cx="222"
+               cy="233"
+               r="4.4720001"
+               id="circle10221" />
+            <circle
+               cx="223"
+               cy="233"
+               r="4.4720001"
+               id="circle10223" />
+            <circle
+               cx="224"
+               cy="233"
+               r="4.1230001"
+               id="circle10225" />
+            <circle
+               cx="225"
+               cy="232"
+               r="4.4720001"
+               id="circle10227" />
+            <circle
+               cx="226"
+               cy="232"
+               r="5"
+               id="circle10229" />
+            <circle
+               cx="227"
+               cy="232"
+               r="5"
+               id="circle10231" />
+            <circle
+               cx="228"
+               cy="231"
+               r="4.4720001"
+               id="circle10233" />
+            <circle
+               cx="229"
+               cy="231"
+               r="5"
+               id="circle10235" />
+            <circle
+               cx="230"
+               cy="231"
+               r="4.4720001"
+               id="circle10237" />
+            <circle
+               cx="230"
+               cy="230"
+               r="4"
+               id="circle10239" />
+            <circle
+               cx="231"
+               cy="230"
+               r="4.1230001"
+               id="circle10241" />
+            <circle
+               cx="232"
+               cy="230"
+               r="4.4720001"
+               id="circle10243" />
+            <circle
+               cx="233"
+               cy="230"
+               r="4.1230001"
+               id="circle10245" />
+            <circle
+               cx="234"
+               cy="229"
+               r="4.4720001"
+               id="circle10247" />
+            <circle
+               cx="235"
+               cy="229"
+               r="4.4720001"
+               id="circle10249" />
+            <circle
+               cx="236"
+               cy="229"
+               r="4.1230001"
+               id="circle10251" />
+            <circle
+               cx="237"
+               cy="228"
+               r="4.4720001"
+               id="circle10253" />
+            <circle
+               cx="238"
+               cy="228"
+               r="4.1230001"
+               id="circle10255" />
+            <circle
+               cx="239"
+               cy="228"
+               r="4"
+               id="circle10257" />
+            <circle
+               cx="239"
+               cy="227"
+               r="4.4720001"
+               id="circle10259" />
+            <circle
+               cx="240"
+               cy="227"
+               r="5"
+               id="circle10261" />
+            <circle
+               cx="241"
+               cy="227"
+               r="4.4720001"
+               id="circle10263" />
+            <circle
+               cx="242"
+               cy="226"
+               r="4.4720001"
+               id="circle10265" />
+            <circle
+               cx="243"
+               cy="226"
+               r="5"
+               id="circle10267" />
+            <circle
+               cx="244"
+               cy="226"
+               r="5"
+               id="circle10269" />
+            <circle
+               cx="244"
+               cy="225"
+               r="4"
+               id="circle10271" />
+            <circle
+               cx="245"
+               cy="225"
+               r="4"
+               id="circle10273" />
+            <circle
+               cx="246"
+               cy="225"
+               r="4.1230001"
+               id="circle10275" />
+            <circle
+               cx="247"
+               cy="224"
+               r="3.6059999"
+               id="circle10277" />
+            <circle
+               cx="248"
+               cy="224"
+               r="4.243"
+               id="circle10279" />
+            <circle
+               cx="249"
+               cy="224"
+               r="4.1230001"
+               id="circle10281" />
+            <circle
+               cx="250"
+               cy="224"
+               r="4"
+               id="circle10283" />
+            <circle
+               cx="250"
+               cy="223"
+               r="4"
+               id="circle10285" />
+            <circle
+               cx="251"
+               cy="223"
+               r="4.1230001"
+               id="circle10287" />
+            <circle
+               cx="252"
+               cy="223"
+               r="4.4720001"
+               id="circle10289" />
+            <circle
+               cx="253"
+               cy="222"
+               r="4.243"
+               id="circle10291" />
+            <circle
+               cx="254"
+               cy="222"
+               r="4.4720001"
+               id="circle10293" />
+            <circle
+               cx="255"
+               cy="221"
+               r="4.4720001"
+               id="circle10295" />
+            <circle
+               cx="256"
+               cy="220"
+               r="4"
+               id="circle10297" />
+            <circle
+               cx="257"
+               cy="220"
+               r="4"
+               id="circle10299" />
+            <circle
+               cx="258"
+               cy="220"
+               r="4.1230001"
+               id="circle10301" />
+            <circle
+               cx="259"
+               cy="220"
+               r="4"
+               id="circle10303" />
+            <circle
+               cx="260"
+               cy="219"
+               r="4.243"
+               id="circle10305" />
+            <circle
+               cx="261"
+               cy="219"
+               r="4.4720001"
+               id="circle10307" />
+            <circle
+               cx="262"
+               cy="219"
+               r="4.1230001"
+               id="circle10309" />
+            <circle
+               cx="263"
+               cy="218"
+               r="5"
+               id="circle10311" />
+            <circle
+               cx="264"
+               cy="218"
+               r="5"
+               id="circle10313" />
+            <circle
+               cx="264"
+               cy="217"
+               r="4.4720001"
+               id="circle10315" />
+            <circle
+               cx="265"
+               cy="217"
+               r="5"
+               id="circle10317" />
+            <circle
+               cx="266"
+               cy="217"
+               r="4.4720001"
+               id="circle10319" />
+            <circle
+               cx="266"
+               cy="216"
+               r="4.1230001"
+               id="circle10321" />
+            <circle
+               cx="267"
+               cy="216"
+               r="4.4720001"
+               id="circle10323" />
+            <circle
+               cx="268"
+               cy="216"
+               r="4.4720001"
+               id="circle10325" />
+            <circle
+               cx="269"
+               cy="215"
+               r="4.4720001"
+               id="circle10327" />
+            <circle
+               cx="270"
+               cy="215"
+               r="4.4720001"
+               id="circle10329" />
+            <circle
+               cx="271"
+               cy="214"
+               r="5"
+               id="circle10331" />
+            <circle
+               cx="272"
+               cy="213"
+               r="5"
+               id="circle10333" />
+            <circle
+               cx="273"
+               cy="213"
+               r="4.4720001"
+               id="circle10335" />
+            <circle
+               cx="273"
+               cy="212"
+               r="4.1230001"
+               id="circle10337" />
+            <circle
+               cx="274"
+               cy="212"
+               r="4.4720001"
+               id="circle10339" />
+            <circle
+               cx="275"
+               cy="212"
+               r="4.4720001"
+               id="circle10341" />
+            <circle
+               cx="276"
+               cy="211"
+               r="5"
+               id="circle10343" />
+            <circle
+               cx="277"
+               cy="210"
+               r="4.4720001"
+               id="circle10345" />
+            <circle
+               cx="278"
+               cy="209"
+               r="4.243"
+               id="circle10347" />
+            <circle
+               cx="279"
+               cy="209"
+               r="4.4720001"
+               id="circle10349" />
+            <circle
+               cx="280"
+               cy="209"
+               r="4.1230001"
+               id="circle10351" />
+            <circle
+               cx="280"
+               cy="208"
+               r="5"
+               id="circle10353" />
+            <circle
+               cx="281"
+               cy="208"
+               r="5"
+               id="circle10355" />
+            <circle
+               cx="281"
+               cy="207"
+               r="4.4720001"
+               id="circle10357" />
+            <circle
+               cx="282"
+               cy="207"
+               r="5"
+               id="circle10359" />
+            <circle
+               cx="283"
+               cy="207"
+               r="4.4720001"
+               id="circle10361" />
+            <circle
+               cx="283"
+               cy="206"
+               r="5"
+               id="circle10363" />
+            <circle
+               cx="284"
+               cy="206"
+               r="5"
+               id="circle10365" />
+            <circle
+               cx="284"
+               cy="205"
+               r="4.4720001"
+               id="circle10367" />
+            <circle
+               cx="285"
+               cy="205"
+               r="5"
+               id="circle10369" />
+            <circle
+               cx="286"
+               cy="204"
+               r="5"
+               id="circle10371" />
+            <circle
+               cx="287"
+               cy="203"
+               r="5"
+               id="circle10373" />
+            <circle
+               cx="288"
+               cy="202"
+               r="5"
+               id="circle10375" />
+            <circle
+               cx="289"
+               cy="201"
+               r="5"
+               id="circle10377" />
+            <circle
+               cx="290"
+               cy="200"
+               r="5"
+               id="circle10379" />
+            <circle
+               cx="291"
+               cy="199"
+               r="5.3850002"
+               id="circle10381" />
+            <circle
+               cx="292"
+               cy="198"
+               r="5"
+               id="circle10383" />
+            <circle
+               cx="293"
+               cy="198"
+               r="5"
+               id="circle10385" />
+            <circle
+               cx="293"
+               cy="197"
+               r="5"
+               id="circle10387" />
+            <circle
+               cx="294"
+               cy="197"
+               r="5"
+               id="circle10389" />
+            <circle
+               cx="294"
+               cy="196"
+               r="5"
+               id="circle10391" />
+            <circle
+               cx="295"
+               cy="195"
+               r="5"
+               id="circle10393" />
+            <circle
+               cx="296"
+               cy="195"
+               r="5"
+               id="circle10395" />
+          </g>
+        </g>
+        <g
+           id="g10403"
+           style="fill:none;stroke:#ffffff;stroke-width:0.5;marker-start:url(#dot-8);marker-mid:url(#dot-8);marker-end:url(#dot-8)">
+          <polyline
+             id="c0"
+             points="239,56 238,57 238,58 238,59 238,60"
+             style="marker-start:url(#dot-8);marker-mid:url(#dot-8);marker-end:url(#dot-8)" />
+          <polyline
+             id="c1"
+             points="98,62"
+             style="marker-start:url(#dot-8);marker-mid:url(#dot-8);marker-end:url(#dot-8)" />
+          <polyline
+             id="c2"
+             points="53,185 53,186 54,187 55,188 55,189 55,190 56,191 57,192 57,193 58,194 58,195 59,196 59,197 60,197 60,198 60,199 61,199 61,200 61,201 62,201 62,202 63,203 63,204 64,204 64,205 65,205 65,206 66,206 66,207 67,208 68,209 69,210 69,211 70,211 70,212 71,212 72,213 73,214 74,215 75,216 76,217 77,217 77,218 78,218 78,219 79,219 79,220 80,220 81,221 82,222 83,222 84,223 85,224 86,224 86,225 87,225 88,225 89,226 90,226 90,227 91,227 92,227 93,227 93,228 94,228 94,229 95,229 96,229 97,230 98,230 99,231 100,231 101,231 102,232 103,232 103,233 104,233 105,233 106,233 107,234 108,234 109,235 110,235 111,235 112,235 113,235 114,235 115,235 116,235 117,236 118,237 119,237 120,237 121,237 122,237 123,237 124,237 125,237 126,238 127,238 128,238 129,238 130,239 131,239 132,239 133,239 134,239 135,239 136,239 137,239 138,239 139,239 140,239 141,239 142,239 143,239 144,240 145,240 146,240 147,240 148,240 149,240 150,240 151,240 152,240 153,240 154,240 155,240 156,240 157,240 158,240 159,240 160,241 161,241 162,241 163,241 164,241 165,241 166,241 167,241 168,241 169,241 170,241 171,241 172,241 173,241 174,241 175,241 176,241 177,241 178,241 179,241 180,241 181,241 182,241 183,241 184,241 185,240 186,240 187,240 188,240 189,239 190,239 191,239 192,239 193,239 194,239 195,239 196,239 197,239 198,239 199,238 200,238 201,238 202,238 203,238 204,238 205,238 206,237 207,237 208,237 208,236 209,236 210,236 211,236 212,236 213,236 214,235 215,235 216,235 217,235 218,235 218,234 219,234 220,234 221,234 221,233 222,233 223,233 224,233 225,232 226,232 227,232 228,231 229,231 230,231 230,230 231,230 232,230 233,230 234,229 235,229 236,229 237,228 238,228 239,228 239,227 240,227 241,227 242,226 243,226 244,226 244,225 245,225 246,225 247,224 248,224 249,224 250,224 250,223 251,223 252,223 253,222 254,222 255,221 256,220 257,220 258,220 259,220 260,219 261,219 262,219 263,218 264,218 264,217 265,217 266,217 266,216 267,216 268,216 269,215 270,215 271,214 272,213 273,213 273,212 274,212 275,212 276,211 277,210 278,209 279,209 280,209 280,208 281,208 281,207 282,207 283,207 283,206 284,206 284,205 285,205 286,204 287,203 288,202 289,201 290,200 291,199 292,198 293,198 293,197 294,197 294,196 295,195 296,195"
+             style="marker-start:url(#dot-8);marker-mid:url(#dot-8);marker-end:url(#dot-8)" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g13202"
+       transform="translate(-1426.9775,79.366898)">
+      <rect
+         style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:306.89666748;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal"
+         id="rect11352"
+         width="360"
+         height="305"
+         x="3586.9775"
+         y="321.51935" />
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect11354"
+         width="350"
+         height="295"
+         x="3591.9778"
+         y="326.51935" />
+      <g
+         transform="translate(3591.5836,326.51939)"
+         id="g11264">
+        <g
+           id="g11188">
+          <g
+             id="p0-2">
+            <polygon
+               points="232.864,54.466 229.711,57.928 246.289,62.072 245.136,57.534 "
+               id="polygon11079" />
+            <circle
+               cx="239"
+               cy="56"
+               r="6.3249998"
+               id="circle11081" />
+            <circle
+               cx="238"
+               cy="60"
+               r="8.5439997"
+               id="circle11083" />
+          </g>
+          <g
+             id="p1-6">
+            <circle
+               cx="98"
+               cy="62"
+               r="8"
+               id="circle11086" />
+          </g>
+          <g
+             id="p2-4">
+            <polygon
+               points="49.775,186.612 51.528,193.236 60.472,188.764 56.225,183.388 "
+               id="polygon11089" />
+            <polygon
+               points="51.598,193.37 59.37,205.955 66.63,202.045 60.402,188.63 "
+               id="polygon11091" />
+            <polygon
+               points="59.897,206.715 66.897,214.715 73.103,209.285 66.103,201.285 "
+               id="polygon11093" />
+            <polygon
+               points="67.4,215.2 83.4,228.2 88.6,221.8 72.6,208.8 "
+               id="polygon11095" />
+            <polygon
+               points="84.867,228.964 92.131,230.041 93.869,223.959 87.133,221.036 "
+               id="polygon11097" />
+            <polygon
+               points="90.172,228.414 90.312,230.844 97.688,227.156 95.828,225.586 "
+               id="polygon11099" />
+            <polygon
+               points="92.867,232.964 99.901,234.846 102.099,227.154 95.133,225.036 "
+               id="polygon11101" />
+            <polygon
+               points="98.172,233.828 100.172,235.828 105.828,230.172 103.828,228.172 "
+               id="polygon11103" />
+            <polygon
+               points="101.735,236.795 107.735,238.795 110.265,231.205 104.265,229.205 "
+               id="polygon11105" />
+            <polygon
+               points="109,239 116,239 116,231 109,231 "
+               id="polygon11107" />
+            <polygon
+               points="113.172,237.828 115.172,239.828 120.828,234.172 118.828,232.172 "
+               id="polygon11109" />
+            <polygon
+               points="117.621,240.982 159.526,245.977 160.474,236.023 118.379,233.018 "
+               id="polygon11111" />
+            <polygon
+               points="160,246 184,245.123 184,236.877 160,236 "
+               id="polygon11113" />
+            <polygon
+               points="185.531,244.828 190.486,242.714 187.514,235.286 182.469,237.172 "
+               id="polygon11115" />
+            <polygon
+               points="189.25,242.992 205.25,241.992 204.75,234.008 188.75,235.008 "
+               id="polygon11117" />
+            <polygon
+               points="207.219,241.328 210.219,239.328 205.781,232.672 202.781,234.672 "
+               id="polygon11119" />
+            <polygon
+               points="208.398,239.98 218.398,238.98 217.602,231.02 207.602,232.02 "
+               id="polygon11121" />
+            <polygon
+               points="219.265,238.795 240.265,231.795 237.735,224.205 216.735,231.205 "
+               id="polygon11123" />
+            <polygon
+               points="240.547,231.689 271.729,219.124 268.271,210.876 237.453,224.311 "
+               id="polygon11125" />
+            <polygon
+               points="273.162,218.162 275.915,214.915 270.085,209.085 266.838,211.838 "
+               id="polygon11127" />
+            <polygon
+               points="274.624,215.79 281.624,212.79 278.376,205.21 271.376,208.21 "
+               id="polygon11129" />
+            <polygon
+               points="283.688,210.844 285,209 277,205 276.312,207.156 "
+               id="polygon11131" />
+            <polygon
+               points="281,211.472 283,211.472 283,202.528 281,202.528 "
+               id="polygon11133" />
+            <polygon
+               points="286.033,210.286 299.391,198.674 292.609,191.326 279.967,203.714 "
+               id="polygon11135" />
+            <circle
+               cx="53"
+               cy="185"
+               r="3.6059999"
+               id="circle11137" />
+            <circle
+               cx="56"
+               cy="191"
+               r="5"
+               id="circle11139" />
+            <circle
+               cx="63"
+               cy="204"
+               r="4.1230001"
+               id="circle11141" />
+            <circle
+               cx="70"
+               cy="212"
+               r="4.1230001"
+               id="circle11143" />
+            <circle
+               cx="86"
+               cy="225"
+               r="4.1230001"
+               id="circle11145" />
+            <circle
+               cx="93"
+               cy="227"
+               r="3.1619999"
+               id="circle11147" />
+            <circle
+               cx="94"
+               cy="229"
+               r="4.1230001"
+               id="circle11149" />
+            <circle
+               cx="101"
+               cy="231"
+               r="4"
+               id="circle11151" />
+            <circle
+               cx="103"
+               cy="233"
+               r="4"
+               id="circle11153" />
+            <circle
+               cx="109"
+               cy="235"
+               r="4"
+               id="circle11155" />
+            <circle
+               cx="116"
+               cy="235"
+               r="4"
+               id="circle11157" />
+            <circle
+               cx="118"
+               cy="237"
+               r="4"
+               id="circle11159" />
+            <circle
+               cx="160"
+               cy="241"
+               r="5"
+               id="circle11161" />
+            <circle
+               cx="184"
+               cy="241"
+               r="4.1230001"
+               id="circle11163" />
+            <circle
+               cx="189"
+               cy="239"
+               r="4"
+               id="circle11165" />
+            <circle
+               cx="205"
+               cy="238"
+               r="4"
+               id="circle11167" />
+            <circle
+               cx="208"
+               cy="236"
+               r="4"
+               id="circle11169" />
+            <circle
+               cx="218"
+               cy="235"
+               r="4"
+               id="circle11171" />
+            <circle
+               cx="239"
+               cy="228"
+               r="4"
+               id="circle11173" />
+            <circle
+               cx="270"
+               cy="215"
+               r="4.4720001"
+               id="circle11175" />
+            <circle
+               cx="273"
+               cy="212"
+               r="4.1230001"
+               id="circle11177" />
+            <circle
+               cx="280"
+               cy="209"
+               r="4.1230001"
+               id="circle11179" />
+            <circle
+               cx="281"
+               cy="207"
+               r="4.4720001"
+               id="circle11181" />
+            <circle
+               cx="283"
+               cy="207"
+               r="4.4720001"
+               id="circle11183" />
+            <circle
+               cx="296"
+               cy="195"
+               r="5"
+               id="circle11185" />
+          </g>
+        </g>
+        <g
+           id="g11193"
+           style="fill:none;stroke:#ffffff;stroke-width:0.5;marker-start:url(#dot-1);marker-mid:url(#dot-1);marker-end:url(#dot-1)">
+          <polyline
+             id="c0-5"
+             points="239,56 238,60"
+             style="marker-start:url(#dot-1);marker-mid:url(#dot-1);marker-end:url(#dot-1)" />
+          <polyline
+             id="c1-3"
+             points="98,62"
+             style="marker-start:url(#dot-1);marker-mid:url(#dot-1);marker-end:url(#dot-1)" />
+          <polyline
+             id="c2-5"
+             points="53,185 56,191 63,204 70,212 86,225 93,227 94,229 101,231 103,233 109,235 116,235 118,237 160,241 184,241 189,239 205,238 208,236 218,235 239,228 270,215 273,212 280,209 281,207 283,207 296,195"
+             style="marker-start:url(#dot-1);marker-mid:url(#dot-1);marker-end:url(#dot-1)" />
+        </g>
+      </g>
+    </g>
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path13210"
+       d="m 1980,553.38625 h 164"
+       style="fill:none;stroke:#000000;stroke-width:9.99999905;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker13214)" />
+    <text
+       id="text16196"
+       y="780.88623"
+       x="2340"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       xml:space="preserve"><tspan
+         id="tspan16194"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.99999988"
+         y="780.88623"
+         x="2340"
+         sodipodi:role="line">Modifizierte</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.99999988"
+         y="860.88623"
+         x="2340"
+         sodipodi:role="line"
+         id="tspan1620">Douglas-Peucker</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.99999988"
+         y="940.88623"
+         x="2340"
+         sodipodi:role="line"
+         id="tspan1622">Kurvenglättung</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:10, 20;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 1530.135,-4.113743 V 1366.7613"
+       id="path1629"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path1633"
+       d="M 2070,-4.113823 V 1366.7613"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:10, 20;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path1635"
+       d="M 449.5592,-4.113783 V 1366.7613"
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:10, 20;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M -2.0398173e-7,1215.7613 H 2560.7187"
+       id="path1637"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <text
+       id="text1643"
+       y="1306.574"
+       x="990.17523"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       xml:space="preserve"><tspan
+         id="tspan1641"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988"
+         y="1306.574"
+         x="990.17523"
+         sodipodi:role="line">Aufbereitung</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       x="1798.6456"
+       y="1306.5739"
+       id="text1649"><tspan
+         sodipodi:role="line"
+         x="1798.6456"
+         y="1306.5739"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988"
+         id="tspan1647">Segmentierung</tspan></text>
+    <text
+       id="text1653"
+       y="1306.5739"
+       x="2316.3594"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.99999988"
+       xml:space="preserve"><tspan
+         id="tspan1651"
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.99999988"
+         y="1306.5739"
+         x="2316.3594"
+         sodipodi:role="line">Nachbereitung</tspan></text>
+  </g>
+  <style
+     id="style935">
+#c {
+    pointer-events: none;
+    fill: none;
+    stroke: white;
+    stroke-width: 0.5;
+    marker-start: url(#dot);
+    marker-mid: url(#dot);
+    marker-end: url(#dot);
+}
+</style>
+  <style
+     id="style2749">
+#c {
+    pointer-events: none;
+    fill: none;
+    stroke: white;
+    stroke-width: 0.5;
+    marker-start: url(#dot);
+    marker-mid: url(#dot);
+    marker-end: url(#dot);
+}
+</style>
+</svg>

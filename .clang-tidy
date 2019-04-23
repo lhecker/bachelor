@@ -1,0 +1,48 @@
+Checks: >-
+  *,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -cppcoreguidelines-pro-bounds-constant-array-index,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -fuchsia-*,
+  -google-runtime-references,
+  -hicpp-no-array-decay,
+  -llvm-header-guard,
+  -objc-*
+FormatStyle: none
+CheckOptions:
+  - key: misc-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
+    value: 1
+  - key: performance-unnecessary-value-param.AllowedTypes
+    value: Point2i
+  - key: performance-for-range-copy.AllowedTypes
+    value: Point2i
+  - key: readability-identifier-naming.Class
+    value: lower_case
+  - key: readability-identifier-naming.Constant
+    value: lower_case
+  - key: readability-identifier-naming.Enum
+    value: lower_case
+  - key: readability-identifier-naming.Function
+    value: lower_case
+  - key: readability-identifier-naming.Member
+    value: lower_case
+  - key: readability-identifier-naming.ClassMemberPrefix
+    value: m_
+  - key: readability-identifier-naming.Namespace
+    value: lower_case
+  - key: readability-identifier-naming.Parameter
+    value: lower_case
+  - key: readability-identifier-naming.TemplateParameter
+    value: CamelCase
+  - key: readability-identifier-naming.Typdef
+    value: lower_case
+  - key: readability-identifier-naming.TypeAlias
+    value: lower_case
+  - key: readability-identifier-naming.Union
+    value: lower_case
+  - key: readability-identifier-naming.Variable
+    value: lower_case
+  - key: readability-implicit-bool-conversion.AllowIntegerConditions
+    value: 1
+  - key: readability-implicit-bool-conversion.AllowPointerConditions
+    value: 1
